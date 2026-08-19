@@ -1,0 +1,52 @@
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+credentials.json
+*.key
+
+# Python
+*.pyc
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# Local crawl data (SQLite, snapshots, exports)
+data/*.db
+data/*.db-wal
+data/*.db-shm
+data/storage/
+data/exports/
+data/logs/
+data/manifests/
+
+# Nested Create Next App git metadata (kept locally, not in this repo)
+dashboard/.git.bak/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
