@@ -2,12 +2,10 @@
 
 Private admin system for collecting, reviewing, and exporting public assembly constituency information from official district sources. Started with Kurupam, and now includes additional constituencies in the dashboard.
 
-Private admin system for collecting, reviewing, and exporting public Kurupam Assembly Constituency information from official district sources.
-
 ## Project structure
 
 ```text
-Scrap/
+Constituency-Explorer/
 ├── collector/                 # Python crawler (separate from dashboard)
 │   ├── config/seeds.json      # Seed URLs, aliases, throttling, allowed hosts
 │   ├── kurupam_collector/     # Crawler package

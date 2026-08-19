@@ -1,17 +1,11 @@
-# OS / editor
-.DS_Store
-.idea/
-.vscode/
-*.swp
-*.swo
+# Keep only the root gitignore. All other dotfiles/dotdirs stay local.
+.*
+!/.gitignore
 
 # Secrets
-.env
-.env.*
-!.env.example
 *.pem
-credentials.json
 *.key
+credentials.json
 
 # Python
 *.pyc
@@ -20,19 +14,18 @@ __pycache__/
 .venv/
 venv/
 *.egg-info/
-.mypy_cache/
-.ruff_cache/
 
 # Node / Next.js
 node_modules/
 .next/
 out/
 dist/
+build/
 coverage/
 *.tsbuildinfo
 next-env.d.ts
 
-# Local crawl data (SQLite, snapshots, exports)
+# Local crawl data
 data/*.db
 data/*.db-wal
 data/*.db-shm
@@ -40,8 +33,13 @@ data/storage/
 data/exports/
 data/logs/
 data/manifests/
+data/skills/
 
-# Nested Create Next App git metadata (kept locally, not in this repo)
+# Local agent / editor copies (not product code)
+agent/
+skills-lock.json
+dashboard/AGENTS.md
+dashboard/CLAUDE.md
 dashboard/.git.bak/
 
 # Logs
