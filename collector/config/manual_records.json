@@ -1,0 +1,1251 @@
+[
+  {
+    "entity_slug": "kurupam-constituency",
+    "category": "constituency_electorate",
+    "review_status": "approved",
+    "source_url": "https://en.wikipedia.org/wiki/Kurupam_Assembly_constituency",
+    "source_title": "Kurupam Assembly constituency — Wikipedia",
+    "context_snippet": "2024 registered electors, turnout, and gender breakdown for Kurupam (ST) Assembly segment",
+    "value": {
+      "constituency_name": "Kurupam (ST)",
+      "reservation": "Scheduled Tribe (ST)",
+      "lok_sabha_segment": "Araku",
+      "district": "Parvathipuram Manyam",
+      "state": "Andhra Pradesh",
+      "total_registered_voters": 194616,
+      "male_voters": 94050,
+      "female_voters": 99034,
+      "third_gender_voters": 39,
+      "electorate_sex_ratio": 1053,
+      "electorate_sex_ratio_label": "1,053 female voters per 1,000 male voters",
+      "turnout_pct": 79.79,
+      "votes_polled": 155291,
+      "data_year": "2024",
+      "data_source": "Wikipedia, News18, IndiaVotes",
+      "source_type": "third_party_election_reference"
+    }
+  },
+  {
+    "entity_slug": "kurupam-constituency",
+    "category": "constituency_profile",
+    "review_status": "approved",
+    "source_url": "https://connectpeople.in/assembly-details/andhrapradesh/kurupam-st/",
+    "source_title": "Kurupam (ST) Assembly — ConnectPeople",
+    "context_snippet": "Constituency landscape: rural electorate share, ST concentration, included mandals, geography",
+    "value": {
+      "constituency_name": "Kurupam (ST)",
+      "district": "Parvathipuram Manyam",
+      "lok_sabha_segment": "Araku",
+      "reservation": "Scheduled Tribe (ST)",
+      "included_mandals": [
+        "Kurupam",
+        "Gummalakshmipuram",
+        "Jiyyammavalasa",
+        "Komarada",
+        "Garugubilli"
+      ],
+      "rural_elector_pct": 100,
+      "st_elector_concentration_pct": 43.53,
+      "border_notes": "Northeastern Andhra Pradesh — near Odisha and Srikakulam district boundaries",
+      "rivers": [
+        "Vamsadhara River",
+        "Gumma Gedda"
+      ],
+      "postal_code": "535524",
+      "nearest_town_km": 31,
+      "nearest_town": "Parvathipuram",
+      "heritage": "Kurupam Palace (est. 1878) — limestone and traditional tribal agency heritage",
+      "data_source": "Wikipedia, connectpeople.in, parvathipurammanyam.ap.gov.in"
+    }
+  },
+  {
+    "entity_slug": "kurupam-constituency",
+    "category": "election_results",
+    "review_status": "approved",
+    "source_url": "https://www.indiavotes.com/vidhan-sabha/andhra-pradesh/2024/kurupam/",
+    "source_title": "Kurupam Assembly Election Results — IndiaVotes",
+    "context_snippet": "Historical assembly election results for Kurupam (ST) — 2024 and 2019",
+    "value": {
+      "constituency_name": "Kurupam (ST)",
+      "elections": [
+        {
+          "year": 2024,
+          "total_registered_voters": 194616,
+          "turnout_pct": 79.79,
+          "votes_polled": 155291,
+          "winner": {
+            "name": "Jagadeeswari Thoyaka",
+            "party": "TDP",
+            "votes": 83355
+          },
+          "runner_up": {
+            "name": "Pushpasreevani Pamula",
+            "party": "YSRCP",
+            "votes": 59855
+          },
+          "victory_margin": 23500
+        },
+        {
+          "year": 2019,
+          "total_registered_voters": 183830,
+          "turnout_pct": 77.93,
+          "votes_polled": 143260,
+          "winner": {
+            "name": "Pushpasreevani Pamula",
+            "party": "YSRCP",
+            "votes": 74527
+          },
+          "runner_up": {
+            "name": "V.V.T.N.S. Priya Thatraj",
+            "party": "TDP",
+            "votes": 47925
+          },
+          "victory_margin": 26602
+        }
+      ],
+      "data_source": "IndiaVotes, Wikipedia, election media"
+    }
+  },
+  {
+    "entity_slug": "komarada",
+    "category": "mptc_reservation",
+    "review_status": "approved",
+    "source_url": "https://www.mycorporator.in/ap/mandal-parishad/vizianagaram/komarada",
+    "source_title": "Komarada Mandal Parishad — MyCorporator",
+    "context_snippet": "15 MPTC seats in Komarada Mandal with SC, ST, UR reservation and 50% women's quota",
+    "value": {
+      "mandal_name": "Komarada",
+      "total_mptc_seats": 15,
+      "reservation_groups": [
+        {
+          "category": "SC",
+          "description": "Seats reserved strictly for SC candidates",
+          "example_ward": "Komarada-1"
+        },
+        {
+          "category": "ST",
+          "description": "Seats reserved strictly for ST candidates",
+          "example_ward": "Palem"
+        },
+        {
+          "category": "UR",
+          "description": "Open category seats available to all classes",
+          "example_ward": "Madalangi"
+        }
+      ],
+      "women_quota_pct": 50,
+      "women_quota_note": "50% of seats across all groups are legally reserved for women",
+      "verification_portal": "https://parvathipurammanyam.ap.gov.in/",
+      "data_source": "mycorporator.in, socialresearchfoundation.com",
+      "source_type": "third_party_local_body_directory"
+    }
+  },
+  {
+    "entity_slug": "kurupam-constituency",
+    "category": "polling_stations",
+    "review_status": "approved",
+    "source_url": "https://voterslist.in/andhra-pradesh/kurupam/",
+    "source_title": "Kurupam polling stations — VotersList.in",
+    "context_snippet": "269 polling stations (parts) and assembly details for Kurupam (ST); booth directory only, not electoral rolls",
+    "value": {
+      "assembly_no": 11,
+      "assembly_name": "Kurupam",
+      "assembly_name_te": "కురుపాం",
+      "reservation": "ST",
+      "state": "Andhra Pradesh",
+      "state_code": "S01",
+      "district": "Parvathipuram Manyam",
+      "district_code": "S0103",
+      "parliament_name": "Araku",
+      "parliament_name_te": "అరకు",
+      "total_parts": 269,
+      "available_rolls": [
+        "SIR DraftRoll - 2026",
+        "Final Roll - 2025",
+        "Draft Roll - 2025",
+        "Supplement-4 2025",
+        "General Election Roll 2024"
+      ],
+      "parts": [
+        {
+          "part_no": 1,
+          "name": "Gummidiguda"
+        },
+        {
+          "part_no": 2,
+          "name": "BIYYALAVALASA"
+        },
+        {
+          "part_no": 3,
+          "name": "Kurupam"
+        },
+        {
+          "part_no": 4,
+          "name": "KURUPAM"
+        },
+        {
+          "part_no": 5,
+          "name": "Kurupam"
+        },
+        {
+          "part_no": 6,
+          "name": "KURUPAM"
+        },
+        {
+          "part_no": 7,
+          "name": "Kurupum"
+        },
+        {
+          "part_no": 8,
+          "name": "Kurupam"
+        },
+        {
+          "part_no": 9,
+          "name": "Kurupam"
+        },
+        {
+          "part_no": 10,
+          "name": "SIVVANNAPETA"
+        },
+        {
+          "part_no": 11,
+          "name": "SIVVANNAPETA"
+        },
+        {
+          "part_no": 12,
+          "name": "Kitchada"
+        },
+        {
+          "part_no": 13,
+          "name": "Rastakuntubai"
+        },
+        {
+          "part_no": 14,
+          "name": "Gotiwada"
+        },
+        {
+          "part_no": 15,
+          "name": "Podi"
+        },
+        {
+          "part_no": 16,
+          "name": "Gumma"
+        },
+        {
+          "part_no": 17,
+          "name": "GUMMA"
+        },
+        {
+          "part_no": 18,
+          "name": "Rajjali"
+        },
+        {
+          "part_no": 19,
+          "name": "YEGULAVADA"
+        },
+        {
+          "part_no": 20,
+          "name": "PORANDAMGUDA"
+        },
+        {
+          "part_no": 21,
+          "name": "P. Levidi"
+        },
+        {
+          "part_no": 22,
+          "name": "Udayapuram"
+        },
+        {
+          "part_no": 23,
+          "name": "KAAKITADA"
+        },
+        {
+          "part_no": 24,
+          "name": "Mondenkhallu"
+        },
+        {
+          "part_no": 25,
+          "name": "Mondenkhallu"
+        },
+        {
+          "part_no": 26,
+          "name": "MARIPALLI"
+        },
+        {
+          "part_no": 27,
+          "name": "Mondekhallu"
+        },
+        {
+          "part_no": 28,
+          "name": "GUJJUVAYI"
+        },
+        {
+          "part_no": 29,
+          "name": "Gujjuvayi"
+        },
+        {
+          "part_no": 30,
+          "name": "Kondabaridi"
+        },
+        {
+          "part_no": 31,
+          "name": "GUNJARADA"
+        },
+        {
+          "part_no": 32,
+          "name": "Pedagottili"
+        },
+        {
+          "part_no": 33,
+          "name": "PEDAGOTHILI"
+        },
+        {
+          "part_no": 34,
+          "name": "VALASABALLERU"
+        },
+        {
+          "part_no": 35,
+          "name": "Gujjuvayisivada"
+        },
+        {
+          "part_no": 36,
+          "name": "GUJJUVAISIVADA"
+        },
+        {
+          "part_no": 37,
+          "name": "Voosakonda"
+        },
+        {
+          "part_no": 38,
+          "name": "PANASABHADRA"
+        },
+        {
+          "part_no": 39,
+          "name": "Dharmalakshmipuram"
+        },
+        {
+          "part_no": 40,
+          "name": "Jumbiri"
+        },
+        {
+          "part_no": 41,
+          "name": "Jumbiri"
+        },
+        {
+          "part_no": 42,
+          "name": "Neelakanthapuram"
+        },
+        {
+          "part_no": 43,
+          "name": "Dandusur"
+        },
+        {
+          "part_no": 44,
+          "name": "TITTIRI"
+        },
+        {
+          "part_no": 45,
+          "name": "TITTIRI"
+        },
+        {
+          "part_no": 46,
+          "name": "JARADA"
+        },
+        {
+          "part_no": 47,
+          "name": "Vobbangi"
+        },
+        {
+          "part_no": 48,
+          "name": "KAKILi"
+        },
+        {
+          "part_no": 49,
+          "name": "Gujjapadu"
+        },
+        {
+          "part_no": 50,
+          "name": "GOYIPAKA"
+        },
+        {
+          "part_no": 51,
+          "name": "KITTALAMBA"
+        },
+        {
+          "part_no": 52,
+          "name": "BEERUPADU"
+        },
+        {
+          "part_no": 53,
+          "name": "LADA"
+        },
+        {
+          "part_no": 54,
+          "name": "Chorupallli"
+        },
+        {
+          "part_no": 55,
+          "name": "JARNA"
+        },
+        {
+          "part_no": 56,
+          "name": "Babbidi"
+        },
+        {
+          "part_no": 57,
+          "name": "PUSABADI"
+        },
+        {
+          "part_no": 58,
+          "name": "Chaparayibinnidi"
+        },
+        {
+          "part_no": 59,
+          "name": "KONDUKUPPA"
+        },
+        {
+          "part_no": 60,
+          "name": "DIGUVADERUVADA"
+        },
+        {
+          "part_no": 61,
+          "name": "NELLIKIKKUVA"
+        },
+        {
+          "part_no": 62,
+          "name": "VANAKABADI"
+        },
+        {
+          "part_no": 63,
+          "name": "KUSA"
+        },
+        {
+          "part_no": 64,
+          "name": "VADAPUTTI"
+        },
+        {
+          "part_no": 65,
+          "name": "REGIDI"
+        },
+        {
+          "part_no": 66,
+          "name": "BALESU"
+        },
+        {
+          "part_no": 67,
+          "name": "GORADA"
+        },
+        {
+          "part_no": 68,
+          "name": "PENGAVA"
+        },
+        {
+          "part_no": 69,
+          "name": "DUDDUKHALLU"
+        },
+        {
+          "part_no": 70,
+          "name": "CHINTALAPADU"
+        },
+        {
+          "part_no": 71,
+          "name": "LOVALAXMIPURAM"
+        },
+        {
+          "part_no": 72,
+          "name": "DORAJAMMU"
+        },
+        {
+          "part_no": 73,
+          "name": "Manda"
+        },
+        {
+          "part_no": 74,
+          "name": "P.AMITI"
+        },
+        {
+          "part_no": 75,
+          "name": "Gummalakshmipuram"
+        },
+        {
+          "part_no": 76,
+          "name": "Gummalakshmipuram"
+        },
+        {
+          "part_no": 77,
+          "name": "ELWINPETA"
+        },
+        {
+          "part_no": 78,
+          "name": "ELWINPETA"
+        },
+        {
+          "part_no": 79,
+          "name": "S.K.PADU"
+        },
+        {
+          "part_no": 80,
+          "name": "Lakkaguda"
+        },
+        {
+          "part_no": 81,
+          "name": "VATTADA"
+        },
+        {
+          "part_no": 82,
+          "name": "Tadikonda"
+        },
+        {
+          "part_no": 83,
+          "name": "CH.JANGIDIBHADRA"
+        },
+        {
+          "part_no": 84,
+          "name": "PEDAKHARJA"
+        },
+        {
+          "part_no": 85,
+          "name": "BODDIDI"
+        },
+        {
+          "part_no": 86,
+          "name": "Iridi"
+        },
+        {
+          "part_no": 87,
+          "name": "S.K.LIKKIDI"
+        },
+        {
+          "part_no": 88,
+          "name": "LUMBESU"
+        },
+        {
+          "part_no": 89,
+          "name": "LAPPATI"
+        },
+        {
+          "part_no": 90,
+          "name": "Oppangi"
+        },
+        {
+          "part_no": 91,
+          "name": "RELLA"
+        },
+        {
+          "part_no": 92,
+          "name": "NONDRUKONA"
+        },
+        {
+          "part_no": 93,
+          "name": "KEESARI"
+        },
+        {
+          "part_no": 94,
+          "name": "Kedaripuram"
+        },
+        {
+          "part_no": 95,
+          "name": "VANGARA"
+        },
+        {
+          "part_no": 96,
+          "name": "DUMMANGI"
+        },
+        {
+          "part_no": 97,
+          "name": "KOSINGIBHADRA"
+        },
+        {
+          "part_no": 98,
+          "name": "KUKKIDI"
+        },
+        {
+          "part_no": 99,
+          "name": "K.SIVADA"
+        },
+        {
+          "part_no": 100,
+          "name": "Chemuduguda"
+        },
+        {
+          "part_no": 101,
+          "name": "PUTTAJAMMU"
+        },
+        {
+          "part_no": 102,
+          "name": "Bithrapaadu"
+        },
+        {
+          "part_no": 103,
+          "name": "BATLABHADRA"
+        },
+        {
+          "part_no": 104,
+          "name": "NIMMALAPAADU"
+        },
+        {
+          "part_no": 105,
+          "name": "Gavaramma peta"
+        },
+        {
+          "part_no": 106,
+          "name": "Gavarampeta"
+        },
+        {
+          "part_no": 107,
+          "name": "Kannapudoravalasa"
+        },
+        {
+          "part_no": 108,
+          "name": "Kannapudoravalasa"
+        },
+        {
+          "part_no": 109,
+          "name": "SUBHADRAMMA VALASA"
+        },
+        {
+          "part_no": 110,
+          "name": "Peda merangi"
+        },
+        {
+          "part_no": 111,
+          "name": "PEDAMERANGI"
+        },
+        {
+          "part_no": 112,
+          "name": "CHINAMERANGI"
+        },
+        {
+          "part_no": 113,
+          "name": "CHINAMERANGI"
+        },
+        {
+          "part_no": 114,
+          "name": "CHINAMERANGI"
+        },
+        {
+          "part_no": 115,
+          "name": "M. Alluvada"
+        },
+        {
+          "part_no": 116,
+          "name": "Taalladumma"
+        },
+        {
+          "part_no": 117,
+          "name": "CHINA TUMBALI"
+        },
+        {
+          "part_no": 118,
+          "name": "Tumbali"
+        },
+        {
+          "part_no": 119,
+          "name": "JOGULUDUMMA"
+        },
+        {
+          "part_no": 120,
+          "name": "Parajapadu"
+        },
+        {
+          "part_no": 121,
+          "name": "Parajapadu"
+        },
+        {
+          "part_no": 122,
+          "name": "LAKSHMI puramu"
+        },
+        {
+          "part_no": 123,
+          "name": "CHintala belagaamu"
+        },
+        {
+          "part_no": 124,
+          "name": "Chintala Belagaamu"
+        },
+        {
+          "part_no": 125,
+          "name": "SINGANAPURAMU"
+        },
+        {
+          "part_no": 126,
+          "name": "Baasangi"
+        },
+        {
+          "part_no": 127,
+          "name": "Sikabadi"
+        },
+        {
+          "part_no": 128,
+          "name": "SIKHABADI"
+        },
+        {
+          "part_no": 129,
+          "name": "BJPuram"
+        },
+        {
+          "part_no": 130,
+          "name": "BOMMIKA"
+        },
+        {
+          "part_no": 131,
+          "name": "Rambhadra puram"
+        },
+        {
+          "part_no": 132,
+          "name": "ALAMANDA"
+        },
+        {
+          "part_no": 133,
+          "name": "RAAVADA"
+        },
+        {
+          "part_no": 134,
+          "name": "T.K.Jammu"
+        },
+        {
+          "part_no": 135,
+          "name": "CHIN DODIJA"
+        },
+        {
+          "part_no": 136,
+          "name": "P T MANDA"
+        },
+        {
+          "part_no": 137,
+          "name": "GORLI"
+        },
+        {
+          "part_no": 138,
+          "name": "Turakanaiduvalasa"
+        },
+        {
+          "part_no": 139,
+          "name": "T.N.Valasa"
+        },
+        {
+          "part_no": 140,
+          "name": "Pedabuddidi"
+        },
+        {
+          "part_no": 141,
+          "name": "Pedabuddidi"
+        },
+        {
+          "part_no": 142,
+          "name": "Ankavaram"
+        },
+        {
+          "part_no": 143,
+          "name": "CHIN BUDDI DI"
+        },
+        {
+          "part_no": 144,
+          "name": "GADISINGAPURAM"
+        },
+        {
+          "part_no": 145,
+          "name": "Itika"
+        },
+        {
+          "part_no": 146,
+          "name": "Arna da"
+        },
+        {
+          "part_no": 147,
+          "name": "Vanaja"
+        },
+        {
+          "part_no": 148,
+          "name": "Dangabhadra"
+        },
+        {
+          "part_no": 149,
+          "name": "Pipp la bhadra"
+        },
+        {
+          "part_no": 150,
+          "name": "Kundara Tiruwada"
+        },
+        {
+          "part_no": 151,
+          "name": "Gedd Tiruvaad"
+        },
+        {
+          "part_no": 152,
+          "name": "CHINAKUDAMA"
+        },
+        {
+          "part_no": 153,
+          "name": "CHINAKUDAMA"
+        },
+        {
+          "part_no": 154,
+          "name": "GOWRIPURA mu"
+        },
+        {
+          "part_no": 155,
+          "name": "Jiyyamma valasa"
+        },
+        {
+          "part_no": 156,
+          "name": "JIYYAMMAVALASA"
+        },
+        {
+          "part_no": 157,
+          "name": "Jiyyamma valasa"
+        },
+        {
+          "part_no": 158,
+          "name": "Konda Chilakamu"
+        },
+        {
+          "part_no": 159,
+          "name": "Drakshini"
+        },
+        {
+          "part_no": 160,
+          "name": "balleru"
+        },
+        {
+          "part_no": 161,
+          "name": "Kuntesu"
+        },
+        {
+          "part_no": 162,
+          "name": "Yendabhadra"
+        },
+        {
+          "part_no": 163,
+          "name": "PUDESU"
+        },
+        {
+          "part_no": 164,
+          "name": "Peda saakha"
+        },
+        {
+          "part_no": 165,
+          "name": "Pedasakha"
+        },
+        {
+          "part_no": 166,
+          "name": "Naya"
+        },
+        {
+          "part_no": 167,
+          "name": "Chinakherjala"
+        },
+        {
+          "part_no": 168,
+          "name": "SARVAPAADU"
+        },
+        {
+          "part_no": 169,
+          "name": "REGULAPAADU"
+        },
+        {
+          "part_no": 170,
+          "name": "PEDAKHERJALA"
+        },
+        {
+          "part_no": 171,
+          "name": "R.L.PURAM"
+        },
+        {
+          "part_no": 172,
+          "name": "R.L.PURAM"
+        },
+        {
+          "part_no": 173,
+          "name": "Kummarigunta"
+        },
+        {
+          "part_no": 174,
+          "name": "KANDIVALASA"
+        },
+        {
+          "part_no": 175,
+          "name": "GANGAREGUVALASA"
+        },
+        {
+          "part_no": 176,
+          "name": "GANGAREGUVALASA"
+        },
+        {
+          "part_no": 177,
+          "name": "Duggi"
+        },
+        {
+          "part_no": 178,
+          "name": "ARTHAM"
+        },
+        {
+          "part_no": 179,
+          "name": "SOMINAIDUVALASA"
+        },
+        {
+          "part_no": 180,
+          "name": "Kallikota"
+        },
+        {
+          "part_no": 181,
+          "name": "KALLIKOTA"
+        },
+        {
+          "part_no": 182,
+          "name": "Kotipaam"
+        },
+        {
+          "part_no": 183,
+          "name": "Gumpagadaba valasa"
+        },
+        {
+          "part_no": 184,
+          "name": "KOMARADA"
+        },
+        {
+          "part_no": 185,
+          "name": "KOMARADA"
+        },
+        {
+          "part_no": 186,
+          "name": "Komarada"
+        },
+        {
+          "part_no": 187,
+          "name": "KOMARADA"
+        },
+        {
+          "part_no": 188,
+          "name": "Gumada"
+        },
+        {
+          "part_no": 189,
+          "name": "SEETHAMAMBAPURAM"
+        },
+        {
+          "part_no": 190,
+          "name": "Chollapadam"
+        },
+        {
+          "part_no": 191,
+          "name": "KUNERU"
+        },
+        {
+          "part_no": 192,
+          "name": "Ulipiri Ramabhadhrapuram"
+        },
+        {
+          "part_no": 193,
+          "name": "Ulipiri Ramabhadhrapuram"
+        },
+        {
+          "part_no": 194,
+          "name": "Kemisheela"
+        },
+        {
+          "part_no": 195,
+          "name": "Korisheela"
+        },
+        {
+          "part_no": 196,
+          "name": "SIKHAVARAM"
+        },
+        {
+          "part_no": 197,
+          "name": "Diguvagunada"
+        },
+        {
+          "part_no": 198,
+          "name": "Kottu"
+        },
+        {
+          "part_no": 199,
+          "name": "kottu"
+        },
+        {
+          "part_no": 200,
+          "name": "Madhalingi"
+        },
+        {
+          "part_no": 201,
+          "name": "Madalingi"
+        },
+        {
+          "part_no": 202,
+          "name": "Todumu"
+        },
+        {
+          "part_no": 203,
+          "name": "Palem"
+        },
+        {
+          "part_no": 204,
+          "name": "PUJARIGUDA"
+        },
+        {
+          "part_no": 205,
+          "name": "Chekkavalasa"
+        },
+        {
+          "part_no": 206,
+          "name": "VANNNAMU"
+        },
+        {
+          "part_no": 207,
+          "name": "Dalayipeta"
+        },
+        {
+          "part_no": 208,
+          "name": "KODULA GUMPA"
+        },
+        {
+          "part_no": 209,
+          "name": "Sivini"
+        },
+        {
+          "part_no": 210,
+          "name": "sivini"
+        },
+        {
+          "part_no": 211,
+          "name": "Parashurampuram"
+        },
+        {
+          "part_no": 212,
+          "name": "Parasurampuram"
+        },
+        {
+          "part_no": 213,
+          "name": "parusurampuram"
+        },
+        {
+          "part_no": 214,
+          "name": "Vikrampuram"
+        },
+        {
+          "part_no": 215,
+          "name": "Vikrampuram"
+        },
+        {
+          "part_no": 216,
+          "name": "chandrampeta"
+        },
+        {
+          "part_no": 217,
+          "name": "Markondaputti R&R Colony at Chandrampeta"
+        },
+        {
+          "part_no": 218,
+          "name": "Gunanapuram"
+        },
+        {
+          "part_no": 219,
+          "name": "Gunanupuram"
+        },
+        {
+          "part_no": 220,
+          "name": "Puligommi"
+        },
+        {
+          "part_no": 221,
+          "name": "Ullibhadra"
+        },
+        {
+          "part_no": 222,
+          "name": "VULLIBADRA"
+        },
+        {
+          "part_no": 223,
+          "name": "Konkadivaram"
+        },
+        {
+          "part_no": 224,
+          "name": "Seetha rama puram"
+        },
+        {
+          "part_no": 225,
+          "name": "SANYASIRAJUPETA"
+        },
+        {
+          "part_no": 226,
+          "name": "Pedagudaba"
+        },
+        {
+          "part_no": 227,
+          "name": "Rayan do ravalasa"
+        },
+        {
+          "part_no": 228,
+          "name": "Vallarigudaba"
+        },
+        {
+          "part_no": 229,
+          "name": "Chinagudaba"
+        },
+        {
+          "part_no": 230,
+          "name": "CHINAGUDABA"
+        },
+        {
+          "part_no": 231,
+          "name": "Dalaayi valasa"
+        },
+        {
+          "part_no": 232,
+          "name": "Uddavolu"
+        },
+        {
+          "part_no": 233,
+          "name": "Uddavolu"
+        },
+        {
+          "part_no": 234,
+          "name": "Peddur"
+        },
+        {
+          "part_no": 235,
+          "name": "PEDDURU"
+        },
+        {
+          "part_no": 236,
+          "name": "Garugu billi"
+        },
+        {
+          "part_no": 237,
+          "name": "Garugubilli"
+        },
+        {
+          "part_no": 238,
+          "name": "Garugubilli"
+        },
+        {
+          "part_no": 239,
+          "name": "Burad Venkatapuram"
+        },
+        {
+          "part_no": 240,
+          "name": "BV PURAM"
+        },
+        {
+          "part_no": 241,
+          "name": "Gottivalasa"
+        },
+        {
+          "part_no": 242,
+          "name": "GOTTIVALAS"
+        },
+        {
+          "part_no": 243,
+          "name": "MARUPENTA"
+        },
+        {
+          "part_no": 244,
+          "name": "Marupenta"
+        },
+        {
+          "part_no": 245,
+          "name": "Sivvaamu"
+        },
+        {
+          "part_no": 246,
+          "name": "Ravupalli"
+        },
+        {
+          "part_no": 247,
+          "name": "RAVUPALLI"
+        },
+        {
+          "part_no": 248,
+          "name": "Ravupalli"
+        },
+        {
+          "part_no": 249,
+          "name": "Kothur"
+        },
+        {
+          "part_no": 250,
+          "name": "Kothapalli"
+        },
+        {
+          "part_no": 251,
+          "name": "KOTHAPALLI"
+        },
+        {
+          "part_no": 252,
+          "name": "Gijaba"
+        },
+        {
+          "part_no": 253,
+          "name": "Gijaba"
+        },
+        {
+          "part_no": 254,
+          "name": "Santosh puram"
+        },
+        {
+          "part_no": 255,
+          "name": "PITTALAMETTA"
+        },
+        {
+          "part_no": 256,
+          "name": "Thotapallli"
+        },
+        {
+          "part_no": 257,
+          "name": "Nandivani valasa"
+        },
+        {
+          "part_no": 258,
+          "name": "Sunki"
+        },
+        {
+          "part_no": 259,
+          "name": "Sunki"
+        },
+        {
+          "part_no": 260,
+          "name": "Naguru"
+        },
+        {
+          "part_no": 261,
+          "name": "NAGURU"
+        },
+        {
+          "part_no": 262,
+          "name": "CHILAKAM"
+        },
+        {
+          "part_no": 263,
+          "name": "New Building Chilakam"
+        },
+        {
+          "part_no": 264,
+          "name": "Lakhanaapuram"
+        },
+        {
+          "part_no": 265,
+          "name": "Lakhanaapuram"
+        },
+        {
+          "part_no": 266,
+          "name": "Ravivalasa"
+        },
+        {
+          "part_no": 267,
+          "name": "Ravivalasa"
+        },
+        {
+          "part_no": 268,
+          "name": "Ravivalasa"
+        },
+        {
+          "part_no": 269,
+          "name": "Ravivalasa"
+        }
+      ],
+      "data_source": "voterslist.in",
+      "source_type": "third_party_polling_station_directory"
+    }
+  }
+]

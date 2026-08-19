@@ -1,0 +1,102 @@
+{
+  "project": "kurupam-data-collection",
+  "user_agent": "KurupamDataResearch/1.0 (+internal-admin; contact: collector@kurupam.local)",
+  "min_request_interval_seconds": 2.0,
+  "default_max_pages": 30,
+  "villagecodes_default_max_pages": 450,
+  "request_timeout_seconds": 30,
+  "allowed_hosts": [
+    "parvathipurammanyam.ap.gov.in",
+    "cdn.s3waas.gov.in",
+    "andhrapradesh.villagecodes.in"
+  ],
+  "allowed_cdn_path_prefixes": [
+    "/s31679091c5a880faf6fb5e6087eb1b2dc/"
+  ],
+  "asset_only_hosts": [
+    "cdn.s3waas.gov.in"
+  ],
+  "enforce_robots_on_asset_hosts": false,
+  "seed_urls": [
+    "https://parvathipurammanyam.ap.gov.in/mandal-maps/",
+    "https://parvathipurammanyam.ap.gov.in/slider/assembly-constituency-maps/",
+    "https://parvathipurammanyam.ap.gov.in/tehsil/",
+    "https://parvathipurammanyam.ap.gov.in/administrative-setup/village-panchayats/",
+    "https://parvathipurammanyam.ap.gov.in/constituencies/"
+  ],
+  "phase2_seed_urls": [
+    "https://parvathipurammanyam.ap.gov.in/mandal-maps/",
+    "https://parvathipurammanyam.ap.gov.in/administrative-setup/village-panchayats/"
+  ],
+  "villagecodes_seed_urls": [
+    "https://andhrapradesh.villagecodes.in/vizianagaram/komarada-54304807/",
+    "https://andhrapradesh.villagecodes.in/vizianagaram/gummalakshmipuram-54304808/",
+    "https://andhrapradesh.villagecodes.in/vizianagaram/kurupam-54304809/",
+    "https://andhrapradesh.villagecodes.in/vizianagaram/jiyyammavalasa-54304810/",
+    "https://andhrapradesh.villagecodes.in/vizianagaram/garugubilli-54304811/"
+  ],
+  "skip_url_patterns": [
+    "electoral-roll",
+    "electoral_roll",
+    "voter-list",
+    "voter_list",
+    "eroll",
+    "captcha",
+    "wp-login",
+    "wp-admin"
+  ],
+  "entities": [
+    {
+      "slug": "kurupam",
+      "display_name": "Kurupam Mandal",
+      "kind": "mandal",
+      "aliases": ["kurupam"]
+    },
+    {
+      "slug": "gummalakshmipuram",
+      "display_name": "Gummalakshmipuram Mandal",
+      "kind": "mandal",
+      "aliases": [
+        "gummalakshmipuram",
+        "gummalaxmipuram",
+        "gummalakshmi puram"
+      ]
+    },
+    {
+      "slug": "jiyammavalasa",
+      "display_name": "Jiyammavalasa Mandal",
+      "kind": "mandal",
+      "aliases": [
+        "jiyammavalasa",
+        "jiyyamavalasa",
+        "jiyyamvalasa",
+        "jiyyammavalasa",
+        "jiyammavalasa",
+        "jiyyammavalasa",
+        "jiyya mmavalasa"
+      ]
+    },
+    {
+      "slug": "komarada",
+      "display_name": "Komarada Mandal",
+      "kind": "mandal",
+      "aliases": ["komarada"]
+    },
+    {
+      "slug": "garugubilli",
+      "display_name": "Garugubilli Mandal",
+      "kind": "mandal",
+      "aliases": ["garugubilli"]
+    },
+    {
+      "slug": "kurupam-constituency",
+      "display_name": "Kurupam Assembly Constituency",
+      "kind": "constituency",
+      "aliases": [
+        "kurupam assembly",
+        "kurupam constituency",
+        "kurupam assembly constituency"
+      ]
+    }
+  ]
+}

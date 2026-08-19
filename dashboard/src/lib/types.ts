@@ -1,0 +1,26 @@
+export type VillageRow = {
+  id: string;
+  entity_slug: string;
+  mandal_name: string;
+  village_name: string;
+  census_village_code: string | null;
+  gram_panchayat: string | null;
+  population: number | null;
+  households: number | null;
+  population_male: number | null;
+  population_female: number | null;
+  population_sc: number | null;
+  population_st: number | null;
+  area: string | null;
+  pin_code: string | null;
+  nearest_town: string | null;
+  census_year: string | null;
+  sex_ratio: string | null;
+  population_density: string | null;
+  cd_block: string | null;
+  nearest_town_distance_km: string | null;
+  sub_district_code: string | null;
+  district: string | null;
+  state: string | null;
+  has_detail: boolean;
+};

@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+:root {
+  /* Telugu Desam Party (TDP) flag palette */
+  --brand-yellow: #ffff00; /* Digital Yellow */
+  --brand-red: #da3925; /* Red Beauty */
+  --brand-green: #2f5c2f; /* Spruce */
+  --brand-white: #ffffff; /* Full White */
+  --brand-black: #2b2626; /* American Black */
+
+  --background: var(--brand-white);
+  --foreground: var(--brand-black);
+  --card: var(--brand-white);
+  --muted: #5c5656;
+  --accent: var(--brand-red);
+  --accent-hover: #b82e1e;
+  --highlight: var(--brand-yellow);
+  --highlight-soft: #ffffe0;
+  --accent-soft: #fdecea;
+  --border: #e8e4e4;
+  --sidebar: var(--brand-black);
+  --surface-muted: #f7f7f5;
+  --overlay: rgb(43 38 38 / 0.5);
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --shadow-sm: 0 1px 2px rgb(43 38 38 / 0.05);
+  --shadow-md: 0 4px 12px rgb(43 38 38 / 0.06);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-red: var(--brand-red);
+  --color-brand-green: var(--brand-green);
+  --color-brand-white: var(--brand-white);
+  --color-brand-black: var(--brand-black);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--highlight);
+  color: var(--brand-black);
+}
+
+/* Highlighter mark: black type on solid yellow, tight to the letters */
+.mark-yellow {
+  display: inline-block;
+  width: fit-content;
+  background: var(--brand-yellow);
+  color: var(--brand-black);
+  padding: 0.08em 0.28em 0.1em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+
+.landing-hero {
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
+
+/* Shared data-table styling */
+.data-table thead th {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--surface-muted);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  white-space: nowrap;
+}
+.data-table thead th.text-right {
+  text-align: right;
+}
+.data-table tbody td {
+  padding: 0.875rem 1rem;
+  border-top: 1px solid var(--border);
+  vertical-align: middle;
+}
+.data-table tbody tr:hover td {
+  background: var(--highlight-soft);
+}
+.data-table tfoot td {
+  padding: 0.875rem 1rem;
+  border-top: 2px solid var(--border);
+  font-weight: 600;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .chart-bar-animate {
+    transition: none !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  border-radius: 0.5rem;
+  background: var(--brand-black);
+  color: var(--brand-white);
+  padding: 0.5rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+  outline: 2px solid var(--brand-green);
+  outline-offset: 2px;
+}
+
+a[href],
+button,
+[role="button"],
+select,
+summary {
+  cursor: pointer;
+}
