@@ -265,7 +265,7 @@ export default function DhoneVillagesPage() {
       <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
         {[
           { label: "Total Population", value: fmt(totals.pop), accent: "var(--brand-green)" },
-          { label: "Households", value: fmt(totals.hh), accent: "var(--brand-yellow)" },
+          { label: "Households", value: fmt(totals.hh), accent: "var(--brand-green)" },
           { label: "Avg Sex Ratio", value: String(avgSexRatio), accent: "var(--brand-red)" },
           { label: "Villages", value: String(DHONE_VILLAGES.length), accent: "var(--accent)" },
         ].map(({ label, value, accent }) => (

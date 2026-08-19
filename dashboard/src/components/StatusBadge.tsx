@@ -1,11 +1,11 @@
 export function StatusBadge({ status }: { status: string }) {
   const styles: Record<string, string> = {
-    pending: "bg-[var(--highlight-soft)] text-[var(--foreground)] ring-1 ring-[var(--brand-yellow)]/60",
+    pending: "bg-[var(--highlight-soft)] text-[var(--foreground)] ring-1 ring-[var(--border)]",
     approved: "bg-[var(--brand-green)] text-[var(--brand-white)]",
     rejected: "bg-[var(--accent-soft)] text-[var(--accent)]",
     outdated: "bg-[var(--surface-muted)] text-[var(--muted)]",
     complete: "bg-[var(--brand-green)] text-[var(--brand-white)]",
-    partial: "bg-[var(--highlight-soft)] text-[var(--foreground)] ring-1 ring-[var(--brand-yellow)]/60",
+    partial: "bg-[var(--highlight-soft)] text-[var(--foreground)] ring-1 ring-[var(--border)]",
     missing: "bg-[var(--surface-muted)] text-[var(--muted)]",
     completed: "bg-[var(--brand-green)] text-[var(--brand-white)]",
     failed: "bg-[var(--accent-soft)] text-[var(--accent)]",

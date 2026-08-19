@@ -36,7 +36,7 @@ export function BoothExplorer({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search part number or booth name…"
-          className="w-full max-w-md rounded-[var(--radius-md)] border border-[var(--border)] bg-white px-4 py-2.5 text-sm shadow-[var(--shadow-sm)] outline-none focus:ring-2 focus:ring-[var(--brand-yellow)]/60"
+          className="w-full max-w-md rounded-[var(--radius-md)] border border-[var(--border)] bg-white px-4 py-2.5 text-sm shadow-[var(--shadow-sm)] outline-none focus:ring-2 focus:ring-[var(--brand-green)]/40"
         />
         <div className="flex flex-wrap items-center gap-3">
           <select

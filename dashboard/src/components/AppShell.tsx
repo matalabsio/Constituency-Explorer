@@ -87,13 +87,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <a href="#main-content" className="skip-link">
         Skip to content
       </a>
-      <div className="flex h-1 w-full shrink-0" aria-hidden="true">
-        <div className="h-full flex-[2] bg-[var(--brand-yellow)]" />
-        <div className="h-full flex-1 bg-[var(--brand-red)]" />
-        <div className="h-full flex-[2] bg-[var(--brand-green)]" />
-      </div>
-
-      <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-white/95 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--card)]/95 backdrop-blur-md">
         <div className="flex items-center gap-3 px-3 py-2.5 sm:px-5">
           <button
             ref={toggleRef}
@@ -101,7 +95,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             aria-expanded={open}
             aria-controls={panelId}
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[var(--brand-black)] py-1 pl-1 pr-3 text-left text-white transition hover:bg-[#1f1b1b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-yellow)] active:scale-[0.98]"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[var(--brand-black)] py-1 pl-1 pr-3 text-left text-white transition hover:bg-[#2e2c29] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-green)] active:scale-[0.98]"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -143,7 +137,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={`shrink-0 rounded-full px-3 py-1.5 text-[13px] font-semibold whitespace-nowrap ${
+                className={`min-h-11 shrink-0 rounded-full px-3 py-2 text-[13px] font-semibold whitespace-nowrap ${
                   active
                     ? "bg-[var(--brand-black)] text-white"
                     : "bg-[var(--surface-muted)] text-[var(--foreground)]"
@@ -188,7 +182,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </div>
       ) : null}
 
-      <main id="main-content" className="min-w-0 px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+      <main id="main-content" className="min-w-0 px-3 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-10">
         <div className="mx-auto max-w-6xl">{children}</div>
       </main>
     </div>

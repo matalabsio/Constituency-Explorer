@@ -1,4 +1,5 @@
 import { getDb, isSqliteReadonly } from "@/lib/db";
+import bundledPolling from "@/data/kurupam-polling-stations.json";
 import {
   TARGET_MANDAL_LABELS,
   TARGET_MANDAL_SLUGS,
@@ -673,8 +674,19 @@ export function getElectionResults(): ConstituencyElections | null {
 
 export function getPollingStations(): PollingStations | null {
   const row = latestRecord("polling_stations", "kurupam-constituency");
-  if (!row) return null;
-  const value = parseValue(row.value_json);
+  if (row) return mapPollingStations(parseValue(row.value_json), row.source_url, row.review_status);
+  return mapPollingStations(
+    bundledPolling.value as Record<string, unknown>,
+    bundledPolling.source_url,
+    bundledPolling.review_status
+  );
+}
+
+function mapPollingStations(
+  value: Record<string, unknown>,
+  sourceUrl: string,
+  reviewStatus: string
+): PollingStations | null {
   const parts: PollingStationPart[] = Array.isArray(value.parts)
     ? value.parts
         .map((p: Record<string, unknown>) => ({
@@ -703,8 +715,8 @@ export function getPollingStations(): PollingStations | null {
     uniqueNames,
     availableRolls: rolls,
     parts,
-    sourceUrl: row.source_url,
-    reviewStatus: row.review_status,
+    sourceUrl,
+    reviewStatus,
   };
 }
 

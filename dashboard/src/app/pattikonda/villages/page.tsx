@@ -236,7 +236,7 @@ export default function PattikondaVillagesPage() {
       <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
         {[
           { label: "Total Population", value: fmt(c.totalPopulation), accent: "var(--brand-green)" },
-          { label: "Households", value: fmt(c.totalHouseholds), accent: "var(--brand-yellow)" },
+          { label: "Households", value: fmt(c.totalHouseholds), accent: "var(--brand-green)" },
           { label: "Avg Sex Ratio", value: String(avgSexRatio), accent: "var(--brand-red)" },
           { label: "Villages", value: String(PATTIKONDA_VILLAGES.length), accent: "var(--accent)" },
         ].map(({ label, value, accent }) => (

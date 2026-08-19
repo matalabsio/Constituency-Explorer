@@ -1,31 +1,29 @@
-/** Telugu Desam Party (TDP) flag palette */
+/** Quiet editorial palette. Spruce is the only accent. */
 export const BRAND = {
-  yellow: "#FFFF00", // Digital Yellow
-  red: "#DA3925", // Red Beauty
-  green: "#2F5C2F", // Spruce
-  white: "#FFFFFF", // Full White
-  black: "#2B2626", // American Black
+  yellow: "#6E775C", // olive, used where yellow used to live
+  red: "#A24B3D",
+  green: "#3D5340",
+  white: "#FFFEFC",
+  black: "#1C1B19",
 } as const;
 
 export const CHART = {
-  st: BRAND.yellow,
+  st: "#6E775C",
   sc: BRAND.red,
   other: BRAND.green,
   male: BRAND.black,
   female: BRAND.red,
-  track: "#eef0ee",
+  track: "#EFEDEA",
 } as const;
 
-/** Cycle all five TDP flag colors for mandal charts and cards. */
 export const MANDAL_COLORS = [
-  BRAND.yellow,
-  BRAND.red,
   BRAND.green,
+  BRAND.red,
   BRAND.black,
-  BRAND.yellow,
+  CHART.st,
+  "#6B6762",
 ];
 
-/** Same mapping as Kurupam charts. Safe to import from Server Components. */
 export const BAR = {
   green: CHART.other,
   red: CHART.sc,
@@ -48,18 +46,12 @@ export function mandalColor(index: number): string {
   return MANDAL_COLORS[index % MANDAL_COLORS.length];
 }
 
-/** Text color when placed on a mandal color swatch. */
 export function mandalLabelColor(hex: string): string {
-  if (hex === BRAND.yellow || hex === BRAND.white) return BRAND.black;
+  if (hex === BRAND.white) return BRAND.black;
   return BRAND.white;
 }
 
-/** Yellow fills need a dark edge on white cards or they disappear. */
 export function chartStroke(fill?: string | null): string {
   if (!fill) return "#ffffff";
-  const hex = fill.toLowerCase();
-  if (hex === BRAND.yellow.toLowerCase() || hex === "#ffff00" || hex === "#ff0") {
-    return BRAND.black;
-  }
   return "#ffffff";
 }

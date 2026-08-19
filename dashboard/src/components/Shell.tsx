@@ -19,8 +19,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
     <div className="min-h-full bg-[var(--background)] text-[var(--foreground)]">
       <div className="flex min-h-screen">
         <aside className="w-64 shrink-0 bg-[var(--sidebar)] text-white">
-          <div className="border-b border-[var(--brand-yellow)]/20 px-5 py-6">
-            <p className="mark-yellow text-[11px] uppercase tracking-[0.22em]">
+          <div className="border-b border-white/10 px-5 py-6">
+            <p className="text-[11px] uppercase tracking-[0.22em] text-white/45">
               Internal admin
             </p>
             <h1 className="mt-2 font-serif text-2xl leading-tight text-white">
@@ -40,7 +40,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
                   href={item.href}
                   className={`rounded-md px-3 py-2 text-sm ${
                     active
-                      ? "bg-[var(--brand-yellow)] text-[var(--brand-black)]"
+                      ? "bg-white text-[var(--brand-black)]"
                       : "text-white/70 hover:bg-white/5 hover:text-white"
                   }`}
                 >
@@ -58,7 +58,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <p className="text-sm text-[var(--muted)]">
               Kurupam constituency sources (district + villagecodes.in)
             </p>
-            <p className="rounded-full border border-[var(--brand-yellow)]/40 bg-[var(--highlight-soft)] px-3 py-1 text-xs text-[var(--foreground)]">
+            <p className="rounded-full border border-[var(--border)] bg-[var(--surface-muted)] px-3 py-1 text-xs text-[var(--foreground)]">
               No invented facts · provenance required
             </p>
           </header>

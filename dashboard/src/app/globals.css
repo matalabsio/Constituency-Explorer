@@ -1,33 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  /* Telugu Desam Party (TDP) flag palette */
-  --brand-yellow: #ffff00; /* Digital Yellow */
-  --brand-red: #da3925; /* Red Beauty */
-  --brand-green: #2f5c2f; /* Spruce */
-  --brand-white: #ffffff; /* Full White */
-  --brand-black: #2b2626; /* American Black */
+  --brand-yellow: #6e775c;
+  --brand-red: #a24b3d;
+  --brand-green: #3d5340;
+  --brand-white: #fffefc;
+  --brand-black: #1c1b19;
 
-  --background: var(--brand-white);
-  --foreground: var(--brand-black);
-  --card: var(--brand-white);
-  --muted: #5c5656;
-  --accent: var(--brand-red);
-  --accent-hover: #b82e1e;
-  --highlight: var(--brand-yellow);
-  --highlight-soft: #ffffe0;
-  --accent-soft: #fdecea;
-  --border: #e8e4e4;
+  --background: #f7f6f3;
+  --foreground: #1c1b19;
+  --card: #fffefc;
+  --muted: #6b6762;
+  --accent: var(--brand-green);
+  --accent-hover: #2c3d2e;
+  --highlight: #e8e6e1;
+  --highlight-soft: #efedea;
+  --accent-soft: #edf3ec;
+  --border: #e6e3dc;
   --sidebar: var(--brand-black);
-  --surface-muted: #f7f7f5;
-  --overlay: rgb(43 38 38 / 0.5);
+  --surface-muted: #f1efea;
+  --overlay: rgb(28 27 25 / 0.4);
 
-  --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.25rem;
-  --shadow-sm: 0 1px 2px rgb(43 38 38 / 0.05);
-  --shadow-md: 0 4px 12px rgb(43 38 38 / 0.06);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 0.875rem;
+  --shadow-sm: 0 1px 2px rgb(28 27 25 / 0.04);
+  --shadow-md: 0 8px 24px rgb(28 27 25 / 0.05);
 }
 
 @theme inline {
@@ -54,19 +53,17 @@ body {
 }
 
 ::selection {
-  background: var(--highlight);
-  color: var(--brand-black);
+  background: var(--accent-soft);
+  color: var(--foreground);
 }
 
-/* Highlighter mark: black type on solid yellow, tight to the letters */
 .mark-yellow {
   display: inline-block;
   width: fit-content;
-  background: var(--brand-yellow);
-  color: var(--brand-black);
-  padding: 0.08em 0.28em 0.1em;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
+  background: transparent;
+  color: var(--muted);
+  padding: 0;
+  letter-spacing: 0.16em;
 }
 
 .scrollbar-thin::-webkit-scrollbar {
@@ -79,11 +76,9 @@ body {
 }
 
 .landing-hero {
-  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
-  box-shadow: var(--shadow-md);
+  border-radius: 0;
 }
 
-/* Shared data-table styling */
 .data-table thead th {
   font-size: 0.6875rem;
   font-weight: 600;
@@ -104,7 +99,7 @@ body {
   vertical-align: middle;
 }
 .data-table tbody tr:hover td {
-  background: var(--highlight-soft);
+  background: var(--surface-muted);
 }
 .data-table tfoot td {
   padding: 0.875rem 1rem;

@@ -139,7 +139,7 @@ export function MiniStatGrid({ children }: { children: ReactNode }) {
 /* ── Buttons ─────────────────────────────────────────────── */
 
 const btnBase =
-  "inline-flex items-center justify-center rounded-[var(--radius-md)] px-5 py-2.5 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-yellow)]";
+  "inline-flex items-center justify-center rounded-[var(--radius-md)] px-5 py-2.5 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-green)]";
 
 export function ButtonPrimary({
   href,
@@ -213,7 +213,7 @@ export function DataTableShell({ children }: { children: ReactNode }) {
 
 export function EmptyState({ title, description }: { title: string; description?: string }) {
   return (
-    <div className="rounded-[var(--radius-xl)] border border-[var(--brand-yellow)]/30 bg-[var(--highlight-soft)] p-10 text-center">
+    <div className="rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--surface-muted)] p-10 text-center">
       <h2 className="text-lg font-semibold text-[var(--foreground)]">{title}</h2>
       {description ? <p className="mx-auto mt-2 max-w-md text-sm text-[var(--muted)]">{description}</p> : null}
     </div>
@@ -246,7 +246,7 @@ export function JumpNav({ items }: { items: { id: string; label: string }[] }) {
           <li key={item.id} className="shrink-0">
             <a
               href={`#${item.id}`}
-              className="inline-flex rounded-full border border-[var(--border)] bg-white px-3.5 py-1.5 text-xs font-medium text-[var(--foreground)] transition hover:border-[var(--brand-green)] hover:bg-[var(--surface-muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-yellow)]"
+              className="inline-flex rounded-full border border-[var(--border)] bg-white px-3.5 py-1.5 text-xs font-medium text-[var(--foreground)] transition hover:border-[var(--brand-green)] hover:bg-[var(--surface-muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-green)]"
             >
               {item.label}
             </a>
@@ -290,7 +290,7 @@ export function ChartFigure({
           <button
             type="button"
             onClick={() => setShowTable((v) => !v)}
-            className="text-xs font-medium text-[var(--accent)] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-yellow)]"
+            className="text-xs font-medium text-[var(--accent)] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-green)]"
             aria-expanded={showTable}
           >
             {showTable ? "Hide data table" : "View data table"}

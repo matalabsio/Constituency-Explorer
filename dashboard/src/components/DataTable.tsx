@@ -43,7 +43,7 @@ export function DataTable<T extends object>({
         value={globalFilter}
         onChange={(event) => setGlobalFilter(event.target.value)}
         placeholder={searchPlaceholder}
-        className="w-full max-w-md rounded-md border border-[var(--border)] bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[var(--brand-yellow)]/50"
+        className="w-full max-w-md rounded-md border border-[var(--border)] bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[var(--brand-green)]/40"
       />
       <div className="overflow-x-auto rounded-xl border border-[var(--border)] bg-white shadow-sm">
         <table className="min-w-full text-left text-sm">
