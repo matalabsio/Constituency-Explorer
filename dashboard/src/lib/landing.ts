@@ -198,7 +198,7 @@ function kurupamLanding(): ConstituencyLandingModel {
   return {
     meta,
     hero: {
-      reservationLabel: "ST reserved constituency",
+      reservationLabel: "AC 11 ST · Parvathipuram Manyam",
       districtLine: `${meta.district} · ${meta.state}`,
       title: "Kurupam Assembly",
       mark: "Constituency Explorer",
@@ -348,8 +348,8 @@ function staticLanding(args: {
   return {
     meta,
     hero: {
-      reservationLabel: `${meta.reservation} constituency · AC ${meta.assemblyNo}`,
-      districtLine: `${meta.district} · ${meta.state}`,
+      reservationLabel: `AC ${meta.assemblyNo} ${meta.reservation} · ${meta.district}`,
+      districtLine: `${meta.state}`,
       title: `${meta.name} Assembly`,
       mark: "Constituency Explorer",
       description: args.description,

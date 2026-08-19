@@ -7,7 +7,7 @@ export default function PattikondaMapsPage() {
   return (
     <AppShell>
       <PageHeader
-        eyebrow="Location maps"
+        eyebrow="AC 142 GEN · Kurnool"
         title="Mandal maps"
         description="Pattikonda, Maddikera, Tuggali, Krishnagiri, and Veldurthy satellite views from VillageMap.in (Google Maps). Official NIC boundary sheets are not on the district site."
       />

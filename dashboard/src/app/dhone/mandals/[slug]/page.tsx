@@ -4,7 +4,9 @@ import { DhoneShell } from "@/components/DhoneShell";
 import { SatelliteMapCard } from "@/components/SatelliteMapCard";
 import { MANDALS, GRAM_PANCHAYATS, getBoothCountByVillage, getMandalMap } from "../../data";
 import { getDhoneVillagesByMandal, getTopDhoneVillages } from "../../villages";
-import { BAR, ChartCard, ColumnChart, PieChart, focusRing } from "../../ui";
+import { BAR, CHART_COLORS, focusRing } from "@/lib/colors";
+import { ChartCard, ColumnChart, PieChart } from "../../ui";
+import { constituencyEyebrow, getConstituencyMeta } from "@/lib/constituencies";
 
 function fmt(n: number): string {
   return n.toLocaleString("en-IN");
@@ -53,7 +55,7 @@ export default async function MandalDetailPage({
       {/* Header */}
       <header className="mb-8">
         <p className="mark-yellow text-xs font-semibold uppercase tracking-[0.18em]">
-          Revenue Mandal
+          {constituencyEyebrow(getConstituencyMeta("dhone"))}
         </p>
         <h1 className="mt-2 text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:text-3xl">
           {m.name} Mandal
@@ -89,8 +91,8 @@ export default async function MandalDetailPage({
               <PieChart
                 caption={`${m.name} gender: male ${fmt(m.male)}, female ${fmt(m.female)}`}
                 slices={[
-                  { label: "Male", value: m.male, color: BAR.black },
-                  { label: "Female", value: m.female, color: BAR.red },
+                  { label: "Male", value: m.male, color: BAR.male },
+                  { label: "Female", value: m.female, color: BAR.female },
                 ]}
               />
             </ChartCard>
@@ -98,9 +100,9 @@ export default async function MandalDetailPage({
               <PieChart
                 caption={`${m.name} social category: SC ${fmt(m.scPopulation)}, ST ${fmt(m.stPopulation)}, other ${fmt(otherPop)}`}
                 slices={[
-                  { label: "SC", value: m.scPopulation, color: BAR.red },
-                  { label: "ST", value: m.stPopulation, color: BAR.gold },
-                  { label: "Other", value: otherPop, color: BAR.green },
+                  { label: "SC", value: m.scPopulation, color: BAR.sc },
+                  { label: "ST", value: m.stPopulation, color: BAR.st },
+                  { label: "Other", value: otherPop, color: BAR.other },
                 ]}
               />
             </ChartCard>
@@ -132,7 +134,7 @@ export default async function MandalDetailPage({
                 slices={topVillages.slice(0, 8).map((v, i) => ({
                   label: v.village_name,
                   value: v.population ?? 0,
-                  color: [BAR.green, BAR.red, BAR.gold, BAR.black][i % 4],
+                  color: CHART_COLORS[i % CHART_COLORS.length],
                 }))}
               />
             </ChartCard>

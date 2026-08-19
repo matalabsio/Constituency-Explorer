@@ -40,7 +40,7 @@ function ConstituencyList({
               >
                 <span className="text-sm font-semibold">{c.name}</span>
                 <span className={`mt-0.5 text-[11px] ${active ? "text-white/60" : "text-[var(--muted)]"}`}>
-                  AC {c.assemblyNo} {c.reservation} {c.district}
+                  AC {c.assemblyNo} {c.reservation} · {c.district}
                 </span>
               </Link>
             </li>
@@ -115,7 +115,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <span className="text-[13px] font-semibold sm:hidden">Explorer</span>
           </button>
 
-          <div className="min-w-0 flex-1 overflow-x-auto">
+          <div className="hidden min-w-0 flex-1 min-[769px]:block">
             <PillNav
               logo="/kurupam-logo.svg"
               logoAlt={`${meta.name} overview`}
@@ -132,6 +132,28 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             />
           </div>
         </div>
+        <nav
+          aria-label="Sections"
+          className="flex gap-1 overflow-x-auto px-3 pb-2.5 min-[769px]:hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {navItems.map((item) => {
+            const active = item.href === activeHref;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                className={`shrink-0 rounded-full px-3 py-1.5 text-[13px] font-semibold whitespace-nowrap ${
+                  active
+                    ? "bg-[var(--brand-black)] text-white"
+                    : "bg-[var(--surface-muted)] text-[var(--foreground)]"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+        </nav>
       </header>
 
       {open ? (
@@ -160,7 +182,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               <ConstituencyList activeId={activeId} onSelect={() => setOpen(false)} />
             </div>
             <p className="border-t border-[var(--border)] px-4 py-3 text-[11px] text-[var(--muted)]">
-              {meta.name} ({meta.reservation}) · {meta.district}
+              {meta.name} · AC {meta.assemblyNo} {meta.reservation} · {meta.district}
             </p>
           </aside>
         </div>

@@ -59,8 +59,8 @@ function VillageDetailPanel({ village, onClose }: { village: PattikondaVillageRo
               <PieChart
                 caption={`${v.village_name} gender: male ${fmt(male)}, female ${fmt(female)}`}
                 slices={[
-                  { label: "Male", value: male, color: BAR.black },
-                  { label: "Female", value: female, color: BAR.red },
+                  { label: "Male", value: male, color: BAR.male },
+                  { label: "Female", value: female, color: BAR.female },
                 ]}
               />
               {v.sex_ratio != null && (
@@ -75,9 +75,9 @@ function VillageDetailPanel({ village, onClose }: { village: PattikondaVillageRo
               <PieChart
                 caption={`${v.village_name} social category`}
                 slices={[
-                  { label: "SC", value: sc, color: BAR.red },
-                  { label: "ST", value: st, color: BAR.gold },
-                  { label: "Other", value: other, color: BAR.green },
+                  { label: "SC", value: sc, color: BAR.sc },
+                  { label: "ST", value: st, color: BAR.st },
+                  { label: "Other", value: other, color: BAR.other },
                 ]}
               />
             </section>
@@ -223,7 +223,7 @@ export default function PattikondaVillagesPage() {
     <PattikondaShell>
       <header className="mb-8">
         <p className="mark-yellow text-xs font-semibold uppercase tracking-[0.18em]">
-          Full directory
+          AC 142 GEN · Kurnool
         </p>
         <h1 className="mt-2 text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:text-3xl">
           Village directory
@@ -254,8 +254,8 @@ export default function PattikondaVillagesPage() {
           <PieChart
             caption={`Gender: male ${fmt(c.totalMale)}, female ${fmt(c.totalFemale)}`}
             slices={[
-              { label: "Male", value: c.totalMale, color: BAR.black },
-              { label: "Female", value: c.totalFemale, color: BAR.red },
+              { label: "Male", value: c.totalMale, color: BAR.male },
+              { label: "Female", value: c.totalFemale, color: BAR.female },
             ]}
           />
           <p className="mt-3 text-xs text-[var(--muted)]">{avgSexRatio} females per 1,000 males</p>

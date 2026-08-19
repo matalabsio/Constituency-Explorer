@@ -1,23 +1,13 @@
 "use client";
 
 import { ChartHoverTip, useChartHover } from "@/components/ChartTooltip";
+import { BAR, CHART_COLORS, chartStroke, focusRing } from "@/lib/colors";
 
 export function fmt(n: number): string {
   return n.toLocaleString("en-IN");
 }
 
-/** Chart colors chosen for contrast on white (not flag yellow). */
-export const BAR = {
-  green: "#2f5c2f",
-  red: "#da3925",
-  black: "#2b2626",
-  gold: "#c4b000",
-} as const;
-
-export const CHART_COLORS = [BAR.green, BAR.red, BAR.gold, BAR.black, "#6b7c4a"] as const;
-
-export const focusRing =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-green)]";
+export { BAR, CHART_COLORS, focusRing };
 
 export function Section({
   id,
@@ -125,7 +115,7 @@ export function PieChart({ slices, caption }: { slices: ChartSlice[]; caption: s
             cy={cy}
             r={r}
             fill={data[0].color}
-            stroke="white"
+            stroke={chartStroke(data[0].color)}
             strokeWidth={1.5}
             className="cursor-pointer"
             onMouseEnter={(e) => show(e, `${data[0].label}: ${fmt(data[0].value)} (100%)`)}
@@ -140,7 +130,7 @@ export function PieChart({ slices, caption }: { slices: ChartSlice[]; caption: s
                 key={arc.label}
                 d={piePath(cx, cy, r, arc.start, arc.end)}
                 fill={arc.color}
-                stroke="white"
+                stroke={chartStroke(arc.color)}
                 strokeWidth={1.5}
                 className="cursor-pointer transition-opacity duration-150 hover:opacity-90"
                 onMouseEnter={(e) => show(e, `${arc.label}: ${fmt(arc.value)} (${pct}%)`)}
@@ -187,7 +177,11 @@ export function BarChart({
               <div className="h-7 overflow-hidden rounded-sm bg-[var(--surface-muted)]">
                 <div
                   className="chart-bar-animate h-full min-w-0 cursor-pointer"
-                  style={{ width: `${Math.max(pct, s.value > 0 ? 2 : 0)}%`, background: s.color }}
+                  style={{
+                    width: `${Math.max(pct, s.value > 0 ? 2 : 0)}%`,
+                    background: s.color,
+                    boxShadow: s.color.toLowerCase() === "#ffff00" ? "inset 0 0 0 1px #2b2626" : undefined,
+                  }}
                   onMouseEnter={(e) => showTip(e, label)}
                   onMouseMove={move}
                   onMouseLeave={hide}
@@ -219,7 +213,11 @@ export function ColumnChart({ slices, caption }: { slices: ChartSlice[]; caption
               <span className="text-[11px] font-semibold tabular-nums">{fmt(s.value)}</span>
               <div
                 className="chart-bar-animate w-full max-w-[3.5rem] cursor-pointer rounded-t-sm"
-                style={{ height: `${Math.max(pct, s.value > 0 ? 4 : 0)}%`, background: s.color }}
+                style={{
+                  height: `${Math.max(pct, s.value > 0 ? 4 : 0)}%`,
+                  background: s.color,
+                  boxShadow: s.color.toLowerCase() === "#ffff00" ? "inset 0 0 0 1px #2b2626" : undefined,
+                }}
                 onMouseEnter={(e) => show(e, `${s.label}: ${fmt(s.value)}`)}
                 onMouseMove={move}
                 onMouseLeave={hide}

@@ -9,7 +9,7 @@ export default function PattikondaMandalsPage() {
   return (
     <AppShell>
       <PageHeader
-        eyebrow="Administrative units"
+        eyebrow="AC 142 GEN · Kurnool"
         title="All mandals"
         description={`${stats.mandals} revenue mandals in ${meta.name} constituency: village counts, gram panchayats, and population totals.`}
       />

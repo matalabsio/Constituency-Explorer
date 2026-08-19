@@ -3,7 +3,6 @@
 import { useState, useMemo } from "react";
 import { DhoneShell } from "@/components/DhoneShell";
 import {
-  ASSEMBLY_DETAILS,
   POLLING_STATIONS,
   AVAILABLE_ROLLS,
   VOTER_DEMOGRAPHICS,
@@ -52,7 +51,7 @@ export default function DhoneBoothsPage() {
     <DhoneShell>
       <header className="mb-6">
         <p className="mark-yellow text-xs font-semibold uppercase tracking-[0.18em]">
-          Dhone Constituency &middot; AC {ASSEMBLY_DETAILS.assemblyNo}
+          AC 141 GEN · Nandyal
         </p>
         <h1 className="mt-2 text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:text-3xl">
           Polling Stations

@@ -55,6 +55,11 @@ export function getConstituencyMeta(id: ConstituencyId): ConstituencyMeta {
   return CONSTITUENCIES.find((c) => c.id === id)!;
 }
 
+/** e.g. "AC 141 GEN · Nandyal" */
+export function constituencyEyebrow(meta: ConstituencyMeta): string {
+  return `AC ${meta.assemblyNo} ${meta.reservation} · ${meta.district}`;
+}
+
 export function constituencyFromPath(pathname: string): ConstituencyId {
   if (pathname === "/dhone" || pathname.startsWith("/dhone/")) return "dhone";
   if (pathname === "/pattikonda" || pathname.startsWith("/pattikonda/")) return "pattikonda";

@@ -9,7 +9,7 @@ export default function DhoneMandalsPage() {
   return (
     <AppShell>
       <PageHeader
-        eyebrow="Administrative units"
+        eyebrow="AC 141 GEN · Nandyal"
         title="All mandals"
         description={`${stats.mandals} revenue mandals in ${meta.name} constituency: village counts, gram panchayats, and population totals.`}
       />

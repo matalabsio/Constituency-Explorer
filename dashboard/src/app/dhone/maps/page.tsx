@@ -7,7 +7,7 @@ export default function DhoneMapsPage() {
   return (
     <AppShell>
       <PageHeader
-        eyebrow="Location maps"
+        eyebrow="AC 141 GEN · Nandyal"
         title="Mandal maps"
         description="Dhone, Bethamcherla, and Peapully satellite views from VillageMap.in (Google Maps). Official NIC boundary sheets are not published on the Nandyal district site."
       />

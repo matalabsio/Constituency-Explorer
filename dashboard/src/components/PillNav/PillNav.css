@@ -238,5 +238,5 @@
 .mobile-menu-popover .mobile-menu-link:hover,
 .mobile-menu-popover .mobile-menu-link.is-active {
   background-color: var(--base);
-  color: var(--hover-text, #fff);
+  color: #ffffff;
 }
