@@ -11,7 +11,7 @@ export default function MapsPage() {
       <PageHeader
         eyebrow="District records"
         title="Mandal maps"
-        description={`Official boundary maps for all ${stats.mandals} revenue mandals in Kurupam (ST) constituency — click any map to expand`}
+        description={`Official boundary maps for all ${stats.mandals} revenue mandals in Kurupam (ST). Click any map to expand.`}
       />
       <MandalMapsGallery mandals={mandals} />
     </AppShell>

@@ -1,9 +1,11 @@
 "use client";
 
+import { ChartHoverTip, useChartHover } from "@/components/ChartTooltip";
 import { CHART, MANDAL_COLORS, mandalColor } from "@/lib/colors";
 import { formatNumber } from "@/lib/mandals";
 import type { MandalDemographics } from "@/lib/demographics";
-import type { GpDemographics, MandalExplore } from "@/lib/explore";
+import type { GpDemographics } from "@/lib/explore";
+import type { LandingMandal } from "@/lib/landing";
 import type { VillageRow } from "@/lib/types";
 
 /* ── Shared legend ───────────────────────────────────────── */
@@ -50,6 +52,7 @@ function SegmentBar({
   className?: string;
 }) {
   const total = segments.reduce((s, seg) => s + seg.value, 0) || 1;
+  const { tip, show, move, hide } = useChartHover();
   return (
     <div
       className={`flex overflow-hidden rounded-full bg-[var(--surface-muted)] ${className}`}
@@ -61,15 +64,20 @@ function SegmentBar({
         seg.value > 0 ? (
           <div
             key={seg.label}
-            className="h-full chart-bar-animate transition-all duration-500"
+            className="h-full cursor-pointer chart-bar-animate transition-all duration-500"
             style={{
               width: `${(seg.value / total) * 100}%`,
               background: seg.color,
             }}
-            title={`${seg.label}: ${formatNumber(seg.value)}`}
+            onMouseEnter={(e) =>
+              show(e, `${seg.label}: ${formatNumber(seg.value)} (${((seg.value / total) * 100).toFixed(1)}%)`)
+            }
+            onMouseMove={move}
+            onMouseLeave={hide}
           />
         ) : null
       )}
+      <ChartHoverTip tip={tip} />
     </div>
   );
 }
@@ -156,6 +164,7 @@ export function SocialCategoryChart({ demographics }: { demographics: MandalDemo
   const donutLabel = slices
     .map((s) => `${s.label}: ${formatNumber(s.value)} (${s.pct}%)`)
     .join("; ");
+  const { tip, show, move, hide } = useChartHover();
 
   return (
     <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
@@ -176,6 +185,12 @@ export function SocialCategoryChart({ demographics }: { demographics: MandalDemo
                 stroke={arc.color}
                 strokeWidth={stroke}
                 strokeLinecap="butt"
+                className="cursor-pointer transition-[stroke-width] duration-200 hover:stroke-[26]"
+                onMouseEnter={(e) =>
+                  show(e, `${arc.label}: ${formatNumber(arc.value)} (${arc.pct}%)`)
+                }
+                onMouseMove={move}
+                onMouseLeave={hide}
               />
             ) : null
           )}
@@ -186,6 +201,7 @@ export function SocialCategoryChart({ demographics }: { demographics: MandalDemo
             {formatNumber(total)}
           </span>
         </div>
+        <ChartHoverTip tip={tip} />
       </div>
       <div className="w-full min-w-0 flex-1">
         <SegmentBar
@@ -208,9 +224,10 @@ export function SocialCategoryChart({ demographics }: { demographics: MandalDemo
 
 /* ── Horizontal bar chart (population by mandal) ───────────── */
 
-export function PopulationBarChart({ mandals }: { mandals: MandalExplore[] }) {
+export function PopulationBarChart({ mandals }: { mandals: LandingMandal[] }) {
   const max = Math.max(...mandals.map((m) => m.totalPopulation), 1);
   const grandTotal = mandals.reduce((s, m) => s + m.totalPopulation, 0);
+  const { tip, show, move, hide } = useChartHover();
 
   return (
     <div className="space-y-5" role="list" aria-label="Population by mandal">
@@ -218,8 +235,9 @@ export function PopulationBarChart({ mandals }: { mandals: MandalExplore[] }) {
         const color = mandalColor(index);
         const pctOfMax = (mandal.totalPopulation / max) * 100;
         const share = grandTotal > 0 ? ((mandal.totalPopulation / grandTotal) * 100).toFixed(1) : "0";
+        const label = `${mandal.displayName}: ${formatNumber(mandal.totalPopulation)} (${share}% of constituency)`;
         return (
-          <div key={mandal.slug} role="listitem" aria-label={`${mandal.displayName}: ${formatNumber(mandal.totalPopulation)} (${share}%)`}>
+          <div key={mandal.slug} role="listitem" aria-label={label}>
             <div className="mb-1.5 flex items-baseline justify-between gap-2 text-sm">
               <span className="min-w-0 truncate font-medium text-[var(--foreground)]">
                 {mandal.displayName}
@@ -231,13 +249,17 @@ export function PopulationBarChart({ mandals }: { mandals: MandalExplore[] }) {
             </div>
             <div className="h-3 overflow-hidden rounded-full bg-[var(--surface-muted)]">
               <div
-                className="chart-bar-animate h-full rounded-full transition-all duration-700 ease-out"
+                className="chart-bar-animate h-full cursor-pointer rounded-full transition-all duration-700 ease-out"
                 style={{ width: `${pctOfMax}%`, background: color }}
+                onMouseEnter={(e) => show(e, label)}
+                onMouseMove={move}
+                onMouseLeave={hide}
               />
             </div>
           </div>
         );
       })}
+      <ChartHoverTip tip={tip} />
       <ChartLegend
         items={mandals.map((m, i) => ({
           label: m.displayName,
@@ -257,36 +279,42 @@ export function MandalCompareChart({
   getValue,
   formatValue,
 }: {
-  mandals: MandalExplore[];
-  getValue: (m: MandalExplore) => number;
+  mandals: LandingMandal[];
+  getValue: (m: LandingMandal) => number;
   formatValue?: (n: number) => string;
 }) {
   const max = Math.max(...mandals.map(getValue), 1);
   const fmt = formatValue ?? formatNumber;
+  const { tip, show, move, hide } = useChartHover();
 
   return (
     <div className="space-y-3" role="list">
       {mandals.map((mandal, index) => {
         const value = getValue(mandal);
         const pct = (value / max) * 100;
+        const label = `${mandal.displayName}: ${fmt(value)}`;
         return (
           <div
             key={mandal.slug}
             role="listitem"
-            aria-label={`${mandal.displayName}: ${fmt(value)}`}
+            aria-label={label}
             className="grid grid-cols-[minmax(0,7rem)_1fr_auto] items-center gap-3 text-sm"
           >
             <span className="truncate font-medium text-[var(--foreground)]">{mandal.displayName}</span>
             <div className="h-2 overflow-hidden rounded-full bg-[var(--surface-muted)]">
               <div
-                className="chart-bar-animate h-full rounded-full transition-all duration-500"
+                className="chart-bar-animate h-full cursor-pointer rounded-full transition-all duration-500"
                 style={{ width: `${pct}%`, background: MANDAL_COLORS[index % MANDAL_COLORS.length] }}
+                onMouseEnter={(e) => show(e, label)}
+                onMouseMove={move}
+                onMouseLeave={hide}
               />
             </div>
             <span className="w-14 text-right tabular-nums text-[var(--muted)]">{fmt(value)}</span>
           </div>
         );
       })}
+      <ChartHoverTip tip={tip} />
     </div>
   );
 }
@@ -303,6 +331,7 @@ export function TopVillagesBarChart({ villages }: { villages: VillageRow[] }) {
   const max = Math.max(...data.map((v) => v.population ?? 0), 1);
   const chartHeight = 240;
   const yTicks = [0, Math.round(max / 2), max];
+  const { tip, show, move, hide } = useChartHover();
 
   return (
     <div
@@ -363,13 +392,15 @@ export function TopVillagesBarChart({ villages }: { villages: VillageRow[] }) {
                     {formatNumber(pop)}
                   </span>
                   <div
-                    className="chart-bar-animate w-full max-w-[2.5rem] rounded-t-[var(--radius-sm)] transition-all duration-500"
+                    className="chart-bar-animate w-full max-w-[2.5rem] cursor-pointer rounded-t-[var(--radius-sm)] transition-all duration-500 group-hover:brightness-110"
                     style={{
                       height: `${barHeight}%`,
                       background: color,
                       minHeight: pop > 0 ? 6 : 0,
                     }}
-                    title={`${village.village_name}: ${formatNumber(pop)}`}
+                    onMouseEnter={(e) => show(e, `${village.village_name}: ${formatNumber(pop)}`)}
+                    onMouseMove={move}
+                    onMouseLeave={hide}
                   />
                 </div>
               );
@@ -395,6 +426,8 @@ export function TopVillagesBarChart({ villages }: { villages: VillageRow[] }) {
           </div>
         </div>
       </div>
+
+      <ChartHoverTip tip={tip} />
 
       <ChartLegend
         items={data.map((v, i) => ({
@@ -469,6 +502,8 @@ function GpBarRow({
   pct: number;
   color: string;
 }) {
+  const { tip, show, move, hide } = useChartHover();
+  const label = `${name}: ${formatNumber(population)} (${villageCount} villages)`;
   return (
     <>
       <div className="mb-1 flex items-baseline justify-between gap-2 text-sm">
@@ -480,10 +515,14 @@ function GpBarRow({
       </div>
       <div className="h-2 overflow-hidden rounded-full bg-[var(--surface-muted)]">
         <div
-          className="chart-bar-animate h-full rounded-full transition-all duration-500"
+          className="chart-bar-animate h-full cursor-pointer rounded-full transition-all duration-500"
           style={{ width: `${pct}%`, background: color }}
+          onMouseEnter={(e) => show(e, label)}
+          onMouseMove={move}
+          onMouseLeave={hide}
         />
       </div>
+      <ChartHoverTip tip={tip} />
     </>
   );
 }

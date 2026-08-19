@@ -1,27 +1,30 @@
-"use client";
-
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { notFound } from "next/navigation";
 import { DhoneShell } from "@/components/DhoneShell";
-import { MANDALS, GRAM_PANCHAYATS, getBoothCountByVillage } from "../../data";
+import { SatelliteMapCard } from "@/components/SatelliteMapCard";
+import { MANDALS, GRAM_PANCHAYATS, getBoothCountByVillage, getMandalMap } from "../../data";
 import { getDhoneVillagesByMandal, getTopDhoneVillages } from "../../villages";
-import { BAR, ChartCard, ColumnChart, PieChart, fmt, focusRing } from "../../ui";
+import { BAR, CHART_COLORS, focusRing } from "@/lib/colors";
+import { ChartCard, ColumnChart, PieChart } from "../../ui";
+import { constituencyEyebrow, getConstituencyMeta } from "@/lib/constituencies";
 
-export default function MandalDetailPage() {
-  const params = useParams();
-  const slug = params.slug as string;
+function fmt(n: number): string {
+  return n.toLocaleString("en-IN");
+}
+
+export function generateStaticParams() {
+  return MANDALS.map((m) => ({ slug: m.slug }));
+}
+
+export default async function MandalDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const mandal = MANDALS.find((m) => m.slug === slug);
 
-  if (!mandal) {
-    return (
-      <DhoneShell>
-        <div className="py-20 text-center">
-          <p className="text-lg font-semibold text-[var(--foreground)]">Mandal not found</p>
-          <Link href="/dhone/mandals" className="mt-2 text-sm text-[var(--brand-green)] hover:underline">Back to mandals</Link>
-        </div>
-      </DhoneShell>
-    );
-  }
+  if (!mandal) notFound();
 
   const m = mandal;
   const villages = getDhoneVillagesByMandal(slug);
@@ -30,6 +33,7 @@ export default function MandalDetailPage() {
   const otherPop = m.population - m.scPopulation - m.stPopulation;
   const boothCounts = getBoothCountByVillage();
   const mandalBooths = villages.reduce((sum, v) => sum + (boothCounts.get(v.village_name) ?? 0), 0);
+  const map = getMandalMap(m.slug);
 
   return (
     <DhoneShell>
@@ -51,7 +55,7 @@ export default function MandalDetailPage() {
       {/* Header */}
       <header className="mb-8">
         <p className="mark-yellow text-xs font-semibold uppercase tracking-[0.18em]">
-          Revenue Mandal
+          {constituencyEyebrow(getConstituencyMeta("dhone"))}
         </p>
         <h1 className="mt-2 text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:text-3xl">
           {m.name} Mandal
@@ -87,8 +91,8 @@ export default function MandalDetailPage() {
               <PieChart
                 caption={`${m.name} gender: male ${fmt(m.male)}, female ${fmt(m.female)}`}
                 slices={[
-                  { label: "Male", value: m.male, color: BAR.black },
-                  { label: "Female", value: m.female, color: BAR.red },
+                  { label: "Male", value: m.male, color: BAR.male },
+                  { label: "Female", value: m.female, color: BAR.female },
                 ]}
               />
             </ChartCard>
@@ -96,9 +100,9 @@ export default function MandalDetailPage() {
               <PieChart
                 caption={`${m.name} social category: SC ${fmt(m.scPopulation)}, ST ${fmt(m.stPopulation)}, other ${fmt(otherPop)}`}
                 slices={[
-                  { label: "SC", value: m.scPopulation, color: BAR.red },
-                  { label: "ST", value: m.stPopulation, color: BAR.gold },
-                  { label: "Other", value: otherPop, color: BAR.green },
+                  { label: "SC", value: m.scPopulation, color: BAR.sc },
+                  { label: "ST", value: m.stPopulation, color: BAR.st },
+                  { label: "Other", value: otherPop, color: BAR.other },
                 ]}
               />
             </ChartCard>
@@ -130,7 +134,7 @@ export default function MandalDetailPage() {
                 slices={topVillages.slice(0, 8).map((v, i) => ({
                   label: v.village_name,
                   value: v.population ?? 0,
-                  color: [BAR.green, BAR.red, BAR.gold, BAR.black][i % 4],
+                  color: CHART_COLORS[i % CHART_COLORS.length],
                 }))}
               />
             </ChartCard>
@@ -167,6 +171,15 @@ export default function MandalDetailPage() {
             </p>
           </section>
         )}
+
+        {map ? (
+          <section className="mb-10">
+            <h2 className="mb-5 text-lg font-semibold tracking-tight text-[var(--foreground)]">
+              Location map
+            </h2>
+            <SatelliteMapCard map={map} displayName={m.name} />
+          </section>
+        ) : null}
 
         {/* Gram Panchayats */}
         {gps.length > 0 && (

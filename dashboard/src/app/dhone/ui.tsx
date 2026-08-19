@@ -1,21 +1,13 @@
 "use client";
 
+import { ChartHoverTip, useChartHover } from "@/components/ChartTooltip";
+import { BAR, CHART_COLORS, chartStroke, focusRing } from "@/lib/colors";
+
 export function fmt(n: number): string {
   return n.toLocaleString("en-IN");
 }
 
-/** Chart colors chosen for contrast on white (not flag yellow). */
-export const BAR = {
-  green: "#2f5c2f",
-  red: "#da3925",
-  black: "#2b2626",
-  gold: "#c4b000",
-} as const;
-
-export const CHART_COLORS = [BAR.green, BAR.red, BAR.gold, BAR.black, "#6b7c4a"] as const;
-
-export const focusRing =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-green)]";
+export { BAR, CHART_COLORS, focusRing };
 
 export function Section({
   id,
@@ -110,29 +102,49 @@ export function PieChart({ slices, caption }: { slices: ChartSlice[]; caption: s
     angle += sweep;
     return { ...s, start, end: angle };
   });
+  const { tip, show, move, hide } = useChartHover();
 
   return (
-    <figure className="flex flex-col items-center gap-5 sm:flex-row sm:items-center">
+    <figure className="relative flex flex-col items-center gap-5 sm:flex-row sm:items-center">
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} role="img" aria-label={caption} className="shrink-0">
         {total === 0 ? (
           <circle cx={cx} cy={cy} r={r} fill="var(--surface-muted)" />
         ) : data.length === 1 ? (
-          <circle cx={cx} cy={cy} r={r} fill={data[0].color} stroke="white" strokeWidth={1.5} />
+          <circle
+            cx={cx}
+            cy={cy}
+            r={r}
+            fill={data[0].color}
+            stroke={chartStroke(data[0].color)}
+            strokeWidth={1.5}
+            className="cursor-pointer"
+            onMouseEnter={(e) => show(e, `${data[0].label}: ${fmt(data[0].value)} (100%)`)}
+            onMouseMove={move}
+            onMouseLeave={hide}
+          />
         ) : (
-          arcs.map((arc) => (
-            <path
-              key={arc.label}
-              d={piePath(cx, cy, r, arc.start, arc.end)}
-              fill={arc.color}
-              stroke="white"
-              strokeWidth={1.5}
-            />
-          ))
+          arcs.map((arc) => {
+            const pct = total > 0 ? ((arc.value / total) * 100).toFixed(1) : "0.0";
+            return (
+              <path
+                key={arc.label}
+                d={piePath(cx, cy, r, arc.start, arc.end)}
+                fill={arc.color}
+                stroke={chartStroke(arc.color)}
+                strokeWidth={1.5}
+                className="cursor-pointer transition-opacity duration-150 hover:opacity-90"
+                onMouseEnter={(e) => show(e, `${arc.label}: ${fmt(arc.value)} (${pct}%)`)}
+                onMouseMove={move}
+                onMouseLeave={hide}
+              />
+            );
+          })
         )}
       </svg>
       <figcaption className="w-full min-w-0 flex-1">
         <ChartLegend slices={data} total={total} />
       </figcaption>
+      <ChartHoverTip tip={tip} />
     </figure>
   );
 }
@@ -151,19 +163,28 @@ export function BarChart({
   const data = slices.filter((s) => s.value >= 0);
   const max = maxValue ?? Math.max(...data.map((s) => s.value), 1);
   const show = formatValue ?? fmt;
+  const { tip, show: showTip, move, hide } = useChartHover();
 
   return (
     <figure role="img" aria-label={caption}>
       <ul className="space-y-3.5" role="list">
         {data.map((s) => {
           const pct = max > 0 ? (s.value / max) * 100 : 0;
+          const label = `${s.label}: ${show(s.value)}`;
           return (
             <li key={s.label} className="grid grid-cols-[minmax(0,7.5rem)_1fr_auto] items-center gap-3">
               <span className="truncate text-sm">{s.label}</span>
               <div className="h-7 overflow-hidden rounded-sm bg-[var(--surface-muted)]">
                 <div
-                  className="chart-bar-animate h-full min-w-0"
-                  style={{ width: `${Math.max(pct, s.value > 0 ? 2 : 0)}%`, background: s.color }}
+                  className="chart-bar-animate h-full min-w-0 cursor-pointer"
+                  style={{
+                    width: `${Math.max(pct, s.value > 0 ? 2 : 0)}%`,
+                    background: s.color,
+                    boxShadow: s.color.toLowerCase() === "#ffff00" ? "inset 0 0 0 1px #2b2626" : undefined,
+                  }}
+                  onMouseEnter={(e) => showTip(e, label)}
+                  onMouseMove={move}
+                  onMouseLeave={hide}
                 />
               </div>
               <span className="w-16 text-right text-sm font-semibold tabular-nums">{show(s.value)}</span>
@@ -171,6 +192,7 @@ export function BarChart({
           );
         })}
       </ul>
+      <ChartHoverTip tip={tip} />
     </figure>
   );
 }
@@ -179,6 +201,7 @@ export function ColumnChart({ slices, caption }: { slices: ChartSlice[]; caption
   const data = slices.filter((s) => s.value >= 0);
   const max = Math.max(...data.map((s) => s.value), 1);
   const height = 180;
+  const { tip, show, move, hide } = useChartHover();
 
   return (
     <figure role="img" aria-label={caption}>
@@ -189,8 +212,15 @@ export function ColumnChart({ slices, caption }: { slices: ChartSlice[]; caption
             <div key={s.label} className="flex h-full min-w-0 flex-1 flex-col items-center justify-end gap-1.5">
               <span className="text-[11px] font-semibold tabular-nums">{fmt(s.value)}</span>
               <div
-                className="chart-bar-animate w-full max-w-[3.5rem] rounded-t-sm"
-                style={{ height: `${Math.max(pct, s.value > 0 ? 4 : 0)}%`, background: s.color }}
+                className="chart-bar-animate w-full max-w-[3.5rem] cursor-pointer rounded-t-sm"
+                style={{
+                  height: `${Math.max(pct, s.value > 0 ? 4 : 0)}%`,
+                  background: s.color,
+                  boxShadow: s.color.toLowerCase() === "#ffff00" ? "inset 0 0 0 1px #2b2626" : undefined,
+                }}
+                onMouseEnter={(e) => show(e, `${s.label}: ${fmt(s.value)}`)}
+                onMouseMove={move}
+                onMouseLeave={hide}
               />
             </div>
           );
@@ -203,6 +233,7 @@ export function ColumnChart({ slices, caption }: { slices: ChartSlice[]; caption
           </p>
         ))}
       </div>
+      <ChartHoverTip tip={tip} />
     </figure>
   );
 }

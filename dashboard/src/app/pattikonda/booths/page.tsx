@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import { PattikondaShell } from "@/components/PattikondaShell";
 import {
-  ASSEMBLY_DETAILS,
   AVAILABLE_ROLLS,
   MANDALS,
   POLLING_STATIONS,
@@ -56,7 +55,7 @@ export default function PattikondaBoothsPage() {
     <PattikondaShell>
       <header className="mb-6">
         <p className="mark-yellow text-xs font-semibold uppercase tracking-[0.18em]">
-          Pattikonda Constituency &middot; AC {ASSEMBLY_DETAILS.assemblyNo}
+          AC 142 GEN · Kurnool
         </p>
         <h1 className="mt-2 text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:text-3xl">
           Polling Stations

@@ -1,27 +1,30 @@
-"use client";
-
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { notFound } from "next/navigation";
 import { PattikondaShell } from "@/components/PattikondaShell";
-import { MANDALS, GRAM_PANCHAYATS, getBoothCountByVillage } from "../../data";
+import { SatelliteMapCard } from "@/components/SatelliteMapCard";
+import { MANDALS, GRAM_PANCHAYATS, getBoothCountByVillage, getMandalMap } from "../../data";
 import { getVillagesByMandal } from "../../villages";
-import { BAR, ChartCard, PieChart, fmt, focusRing } from "@/app/dhone/ui";
+import { BAR, focusRing } from "@/lib/colors";
+import { ChartCard, PieChart } from "@/app/dhone/ui";
+import { constituencyEyebrow, getConstituencyMeta } from "@/lib/constituencies";
 
-export default function PattikondaMandalDetailPage() {
-  const params = useParams();
-  const slug = params.slug as string;
+function fmt(n: number): string {
+  return n.toLocaleString("en-IN");
+}
+
+export function generateStaticParams() {
+  return MANDALS.map((m) => ({ slug: m.slug }));
+}
+
+export default async function PattikondaMandalDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const mandal = MANDALS.find((m) => m.slug === slug);
 
-  if (!mandal) {
-    return (
-      <PattikondaShell>
-        <div className="py-20 text-center">
-          <p className="text-lg font-semibold text-[var(--foreground)]">Mandal not found</p>
-          <Link href="/pattikonda/mandals" className="mt-2 text-sm text-[var(--brand-green)] hover:underline">Back to mandals</Link>
-        </div>
-      </PattikondaShell>
-    );
-  }
+  if (!mandal) notFound();
 
   const m = mandal;
   const villages = getVillagesByMandal(slug);
@@ -29,6 +32,7 @@ export default function PattikondaMandalDetailPage() {
   const otherPop = m.population - m.scPopulation - m.stPopulation;
   const boothCounts = getBoothCountByVillage();
   const mandalBooths = villages.reduce((sum, v) => sum + (boothCounts.get(v.village_name) ?? 0), 0);
+  const map = getMandalMap(m.slug);
 
   return (
     <PattikondaShell>
@@ -48,7 +52,7 @@ export default function PattikondaMandalDetailPage() {
 
       <header className="mb-8">
         <p className="mark-yellow text-xs font-semibold uppercase tracking-[0.18em]">
-          Revenue Mandal
+          {constituencyEyebrow(getConstituencyMeta("pattikonda"))}
         </p>
         <h1 className="mt-2 text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:text-3xl">
           {m.name} Mandal
@@ -82,8 +86,8 @@ export default function PattikondaMandalDetailPage() {
               <PieChart
                 caption={`${m.name} gender: male ${fmt(m.male)}, female ${fmt(m.female)}`}
                 slices={[
-                  { label: "Male", value: m.male, color: BAR.black },
-                  { label: "Female", value: m.female, color: BAR.red },
+                  { label: "Male", value: m.male, color: BAR.male },
+                  { label: "Female", value: m.female, color: BAR.female },
                 ]}
               />
             </ChartCard>
@@ -91,9 +95,9 @@ export default function PattikondaMandalDetailPage() {
               <PieChart
                 caption={`${m.name} social category: SC ${fmt(m.scPopulation)}, ST ${fmt(m.stPopulation)}, other ${fmt(otherPop)}`}
                 slices={[
-                  { label: "SC", value: m.scPopulation, color: BAR.red },
-                  { label: "ST", value: m.stPopulation, color: BAR.gold },
-                  { label: "Other", value: otherPop, color: BAR.green },
+                  { label: "SC", value: m.scPopulation, color: BAR.sc },
+                  { label: "ST", value: m.stPopulation, color: BAR.st },
+                  { label: "Other", value: otherPop, color: BAR.other },
                 ]}
               />
             </ChartCard>
@@ -150,6 +154,15 @@ export default function PattikondaMandalDetailPage() {
             </p>
           </section>
         )}
+
+        {map ? (
+          <section className="mb-10">
+            <h2 className="mb-5 text-lg font-semibold tracking-tight text-[var(--foreground)]">
+              Location map
+            </h2>
+            <SatelliteMapCard map={map} displayName={m.name} />
+          </section>
+        ) : null}
 
         {gps.length > 0 && (
           <section>

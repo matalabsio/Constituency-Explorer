@@ -25,6 +25,7 @@ type PillNavProps = {
   activeDotColor?: string;
   onMobileMenuClick?: () => void;
   initialLoadAnimation?: boolean;
+  hideLogo?: boolean;
 };
 
 export default function PillNav({
@@ -41,6 +42,7 @@ export default function PillNav({
   activeDotColor,
   onMobileMenuClick,
   initialLoadAnimation = true,
+  hideLogo = false,
 }: PillNavProps) {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -260,16 +262,18 @@ export default function PillNav({
   return (
     <div className="pill-nav-container">
       <nav className={`pill-nav ${className}`} aria-label="Primary" style={cssVars}>
-        <Link
-          className="pill-logo"
-          href={homeHref}
-          aria-label="Home"
-          onMouseEnter={handleLogoEnter}
-          ref={logoRef}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={logo} alt={logoAlt} ref={logoImgRef} />
-        </Link>
+        {hideLogo ? null : (
+          <Link
+            className="pill-logo"
+            href={homeHref}
+            aria-label="Home"
+            onMouseEnter={handleLogoEnter}
+            ref={logoRef}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={logo} alt={logoAlt} ref={logoImgRef} />
+          </Link>
+        )}
 
         <div className="pill-nav-items desktop-only" ref={navItemsRef}>
           <ul className="pill-list" role="menubar">

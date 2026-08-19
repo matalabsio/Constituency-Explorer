@@ -65,8 +65,8 @@ function VillageDetailPanel({ village, onClose }: { village: DhoneVillageRow; on
               <PieChart
                 caption={`${v.village_name} gender: male ${fmt(male)}, female ${fmt(female)}`}
                 slices={[
-                  { label: "Male", value: male, color: BAR.black },
-                  { label: "Female", value: female, color: BAR.red },
+                  { label: "Male", value: male, color: BAR.male },
+                  { label: "Female", value: female, color: BAR.female },
                 ]}
               />
               {v.sex_ratio != null && (
@@ -82,9 +82,9 @@ function VillageDetailPanel({ village, onClose }: { village: DhoneVillageRow; on
               <PieChart
                 caption={`${v.village_name} social category`}
                 slices={[
-                  { label: "SC", value: sc, color: BAR.red },
-                  { label: "ST", value: st, color: BAR.gold },
-                  { label: "Other", value: other, color: BAR.green },
+                  { label: "SC", value: sc, color: BAR.sc },
+                  { label: "ST", value: st, color: BAR.st },
+                  { label: "Other", value: other, color: BAR.other },
                 ]}
               />
             </section>
@@ -251,7 +251,7 @@ export default function DhoneVillagesPage() {
       {/* Header */}
       <header className="mb-8">
         <p className="mark-yellow text-xs font-semibold uppercase tracking-[0.18em]">
-          Full directory
+          AC 141 GEN · Nandyal
         </p>
         <h1 className="mt-2 text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:text-3xl">
           Village directory
@@ -284,8 +284,8 @@ export default function DhoneVillagesPage() {
           <PieChart
             caption={`Gender: male ${fmt(totals.male)}, female ${fmt(totals.female)}`}
             slices={[
-              { label: "Male", value: totals.male, color: BAR.black },
-              { label: "Female", value: totals.female, color: BAR.red },
+              { label: "Male", value: totals.male, color: BAR.male },
+              { label: "Female", value: totals.female, color: BAR.female },
             ]}
           />
           <p className="mt-3 text-xs text-[var(--muted)]">{avgSexRatio} females per 1,000 males</p>
@@ -295,9 +295,9 @@ export default function DhoneVillagesPage() {
           <PieChart
             caption="Social category"
             slices={[
-              { label: "SC", value: totals.sc, color: BAR.red },
-              { label: "ST", value: totals.st, color: BAR.gold },
-              { label: "Other", value: totals.pop - totals.sc - totals.st, color: BAR.green },
+              { label: "SC", value: totals.sc, color: BAR.sc },
+              { label: "ST", value: totals.st, color: BAR.st },
+              { label: "Other", value: totals.pop - totals.sc - totals.st, color: BAR.other },
             ]}
           />
         </div>

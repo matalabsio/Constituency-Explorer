@@ -1,4 +1,5 @@
 import { PATTIKONDA_VILLAGES } from "./villages";
+import { kurnoolHybridMap, type MandalMapRef } from "@/lib/maps";
 
 export const ASSEMBLY_DETAILS = {
   assemblyNo: 142,
@@ -133,6 +134,43 @@ export const MANDALS: MandalData[] = [
     density: 195,
   },
 ];
+
+export const MANDAL_MAPS: MandalMapRef[] = [
+  {
+    slug: "pattikonda",
+    listedName: "Pattikonda",
+    villagemapUrl: "https://villagemap.in/andhra-pradesh/kurnool/pattikonda.html",
+    ...kurnoolHybridMap("Pattikonda"),
+  },
+  {
+    slug: "maddikera",
+    listedName: "Maddikera (east)",
+    villagemapUrl: "https://villagemap.in/andhra-pradesh/kurnool/maddikera+(east).html",
+    ...kurnoolHybridMap("Maddikera (east)"),
+  },
+  {
+    slug: "tuggali",
+    listedName: "Tuggali",
+    villagemapUrl: "https://villagemap.in/andhra-pradesh/kurnool/tuggali.html",
+    ...kurnoolHybridMap("Tuggali"),
+  },
+  {
+    slug: "krishnagiri",
+    listedName: "Krishnagiri",
+    villagemapUrl: "https://villagemap.in/andhra-pradesh/kurnool/krishnagiri.html",
+    ...kurnoolHybridMap("Krishnagiri"),
+  },
+  {
+    slug: "veldurthy",
+    listedName: "Veldurthi",
+    villagemapUrl: "https://villagemap.in/andhra-pradesh/kurnool/veldurthi.html",
+    ...kurnoolHybridMap("Veldurthi"),
+  },
+];
+
+export function getMandalMap(slug: string): MandalMapRef | undefined {
+  return MANDAL_MAPS.find((m) => m.slug === slug);
+}
 
 export const CONSTITUENCY_TOTALS = {
   mandals: MANDALS.length,

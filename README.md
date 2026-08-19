@@ -75,9 +75,11 @@ npm install
 npm run dev
 ```
 
+To deploy on Vercel, follow `dashboard/DEPLOY.md`. Root Directory must be `dashboard`.
+
 Environment overrides:
 
-- `KURUPAM_DATA_DIR` — defaults to `../data`
+- `KURUPAM_DATA_DIR` — defaults to `dashboard/data` when `kurupam.db` is bundled there, otherwise `../data`
 - `KURUPAM_DB_PATH` — defaults to `$KURUPAM_DATA_DIR/kurupam.db`
 
 ## Safety notes
