@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kurupam Explorer",
-  description: "Explore Kurupam constituency mandals and villages",
+  title: "Constituency Explorer",
+  description: "Explore Kurupam, Dhone, and Pattikonda assembly constituencies",
   robots: { index: false, follow: false },
 };
 

@@ -14,9 +14,11 @@ export async function POST(request: Request) {
     updateReviewStatus(body.id, body.status, body.classification ?? null, body.note ?? null);
     return NextResponse.json({ ok: true });
   } catch (error) {
+    const message = error instanceof Error ? error.message : "review failed";
+    const readonly = message.includes("read-only");
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "review failed" },
-      { status: 400 }
+      { error: message },
+      { status: readonly ? 403 : 400 }
     );
   }
 }

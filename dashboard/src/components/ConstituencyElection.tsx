@@ -1,7 +1,8 @@
 import { Card, CardBody, DataTableShell, FieldGrid, MiniStat, MiniStatGrid } from "@/components/ui";
 import { BRAND } from "@/lib/colors";
 import { formatNumber } from "@/lib/mandals";
-import type { ConstituencyElections, ConstituencyProfile } from "@/lib/queries";
+import type { LandingElection } from "@/lib/landing";
+import type { ConstituencyProfile } from "@/lib/queries";
 
 export function ConstituencyProfilePanel({ profile }: { profile: ConstituencyProfile }) {
   return (
@@ -18,7 +19,7 @@ export function ConstituencyProfilePanel({ profile }: { profile: ConstituencyPro
                 { label: "Reservation", value: profile.reservation },
                 { label: "District", value: profile.district },
                 { label: "Lok Sabha segment", value: profile.lokSabhaSegment },
-                { label: "PIN code (Kurupam HQ)", value: profile.postalCode },
+                { label: "PIN code", value: profile.postalCode },
                 {
                   label: "Nearest town",
                   value:
@@ -33,7 +34,7 @@ export function ConstituencyProfilePanel({ profile }: { profile: ConstituencyPro
           <div>
             <h3 className="text-base font-semibold text-[var(--foreground)]">Electorate landscape</h3>
             <p className="mt-1 mb-5 text-sm text-[var(--muted)]">
-              Agency tracts across five revenue mandals
+              {profile.includedMandals.length} revenue mandals in this assembly segment
             </p>
             <MiniStatGrid>
               {profile.ruralElectorPct != null ? (
@@ -73,7 +74,7 @@ export function ElectionHistoryPanel({
   elections,
   constituencyName,
 }: {
-  elections: ConstituencyElections["elections"];
+  elections: LandingElection[];
   constituencyName: string;
 }) {
   return (
@@ -99,19 +100,31 @@ export function ElectionHistoryPanel({
                   <td className="text-right tabular-nums">
                     {formatNumber(election.totalRegisteredVoters)}
                   </td>
-                  <td className="text-right tabular-nums">{election.turnoutPct.toFixed(2)}%</td>
+                  <td className="text-right tabular-nums">
+                    {election.turnoutPct != null ? `${election.turnoutPct.toFixed(2)}%` : "—"}
+                  </td>
                   <td className="text-right tabular-nums">{formatNumber(election.votesPolled)}</td>
                   <td>
                     <span className="font-medium text-[var(--foreground)]">{election.winner.name}</span>
                     <span className="ml-1.5 text-xs text-[var(--muted)]">
-                      ({election.winner.party}) · {formatNumber(election.winner.votes)}
+                      ({election.winner.party})
+                      {election.winner.votes != null ? ` · ${formatNumber(election.winner.votes)}` : ""}
                     </span>
                   </td>
                   <td>
-                    <span className="font-medium text-[var(--foreground)]">{election.runnerUp.name}</span>
-                    <span className="ml-1.5 text-xs text-[var(--muted)]">
-                      ({election.runnerUp.party}) · {formatNumber(election.runnerUp.votes)}
-                    </span>
+                    {election.runnerUp ? (
+                      <>
+                        <span className="font-medium text-[var(--foreground)]">{election.runnerUp.name}</span>
+                        <span className="ml-1.5 text-xs text-[var(--muted)]">
+                          ({election.runnerUp.party})
+                          {election.runnerUp.votes != null
+                            ? ` · ${formatNumber(election.runnerUp.votes)}`
+                            : ""}
+                        </span>
+                      </>
+                    ) : (
+                      "—"
+                    )}
                   </td>
                   <td className="text-right tabular-nums font-medium text-[var(--accent)]">
                     {formatNumber(election.victoryMargin)}

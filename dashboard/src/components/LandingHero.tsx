@@ -1,17 +1,12 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { BRAND } from "@/lib/colors";
-import type { ConstituencyElectorate } from "@/lib/queries";
-import type { ConstituencyStats } from "@/lib/explore";
+import type { ConstituencyLandingModel } from "@/lib/landing";
 import { formatNumber } from "@/lib/mandals";
 
-export function LandingHero({
-  stats,
-  electorate,
-}: {
-  stats: ConstituencyStats;
-  electorate: ConstituencyElectorate | null;
-}) {
+export function LandingHero({ data }: { data: ConstituencyLandingModel }) {
+  const { stats, electorate, hero, villagesHref, mandalsHref, mapsHref } = data;
+
   const heroStats = [
     ...(electorate
       ? [
@@ -47,15 +42,13 @@ export function LandingHero({
 
   return (
     <section className="landing-hero relative -mx-4 -mt-8 mb-12 overflow-hidden sm:-mx-6 lg:-mx-8 lg:-mt-10 lg:mb-14">
-      {/* TDP flag stripe: yellow · red · green */}
       <div className="flex h-1.5 w-full">
         <div className="h-full flex-[2] bg-[var(--brand-yellow)]" />
         <div className="h-full flex-1 bg-[var(--brand-red)]" />
         <div className="h-full flex-[2] bg-[var(--brand-green)]" />
       </div>
 
-      <div className="relative bg-[var(--brand-black)] px-4 py-12 sm:px-8 sm:py-14 lg:px-10 lg:py-16">
-        {/* Subtle grid texture */}
+      <div className="relative bg-[var(--brand-black)] px-4 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.07]"
           style={{
@@ -75,61 +68,58 @@ export function LandingHero({
         />
 
         <div className="relative grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-12">
-          {/* Copy + CTAs */}
           <div>
             <div className="flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center bg-[var(--brand-yellow)] px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[var(--brand-black)]">
-                ST Reserved Constituency
+                {hero.reservationLabel}
               </span>
-              {electorate ? (
+              {hero.electorBadge ? (
                 <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-medium text-white/70">
-                  {formatNumber(electorate.totalRegisteredVoters)} electors · {electorate.lokSabhaSegment ?? "Araku"} LS
+                  {hero.electorBadge}
                 </span>
               ) : null}
             </div>
 
             <p className="mark-yellow mt-5 text-xs font-semibold uppercase tracking-[0.22em]">
-              Parvathipuram Manyam · Andhra Pradesh
+              {hero.districtLine}
             </p>
-            <h1 className="mt-3 text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
-              Kurupam Assembly
+            <h1 className="mt-3 max-w-xl text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+              {hero.title}
               <span className="mt-2 block">
-                <span className="mark-yellow">Constituency Explorer</span>
+                <span className="mark-yellow">{hero.mark}</span>
               </span>
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-white/65 sm:text-lg">
-              Complete local directory for five revenue mandals — {formatNumber(stats.officialVillages)}{" "}
-              villages, gram panchayats, census demographics, electorate data, and official maps.
+              {hero.description}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/villages"
-                className="inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--brand-red)] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[var(--brand-red)]/25 transition hover:bg-[var(--accent-hover)]"
+                href={villagesHref}
+                className="inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--brand-red)] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[var(--brand-red)]/25 transition hover:bg-[var(--accent-hover)] active:scale-[0.98]"
               >
                 Browse {formatNumber(stats.collectedVillages)} villages
               </Link>
               <Link
-                href="/mandals"
-                className="inline-flex items-center justify-center rounded-[var(--radius-md)] border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
+                href={mandalsHref}
+                className="inline-flex items-center justify-center rounded-[var(--radius-md)] border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/10 active:scale-[0.98]"
               >
                 Explore mandals
               </Link>
               <Link
-                href="/maps"
+                href={mapsHref}
                 className="inline-flex items-center justify-center rounded-[var(--radius-md)] px-4 py-3 text-sm font-medium text-white/60 transition hover:bg-[var(--brand-yellow)] hover:text-[var(--brand-black)]"
               >
-                View maps →
+                View maps
               </Link>
             </div>
           </div>
 
-          {/* Stat grid */}
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {heroStats.map((item) => (
               <div
                 key={item.label}
-                className="relative overflow-hidden rounded-[var(--radius-lg)] border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm sm:p-5"
+                className="relative overflow-hidden rounded-[var(--radius-lg)] border border-white/10 bg-white/[0.04] p-4 sm:p-5"
               >
                 <div
                   className="absolute inset-x-0 top-0 h-0.5"
@@ -151,7 +141,7 @@ export function LandingHero({
                       : item.label === "Mandals"
                         ? "Revenue subdivisions"
                         : item.label === "Registered electors"
-                          ? electorate?.reservation ?? "ST reserved"
+                          ? electorate?.reservation ?? "Reserved"
                           : "District records"}
                   </p>
                 )}
@@ -161,13 +151,11 @@ export function LandingHero({
         </div>
       </div>
 
-      {/* Bottom fade into page */}
       <div className="h-px w-full bg-gradient-to-r from-transparent via-[var(--brand-yellow)]/40 to-transparent" />
     </section>
   );
 }
 
-/** Section anchor wrapper for landing page blocks */
 export function LandingSection({
   id,
   title,

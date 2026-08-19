@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { PattikondaShell } from "@/components/PattikondaShell";
-import { MANDALS, GRAM_PANCHAYATS, getBoothCountByVillage } from "../../data";
+import { SatelliteMapCard } from "@/components/SatelliteMapCard";
+import { MANDALS, GRAM_PANCHAYATS, getBoothCountByVillage, getMandalMap } from "../../data";
 import { getVillagesByMandal } from "../../villages";
 import { BAR, ChartCard, PieChart, fmt, focusRing } from "@/app/dhone/ui";
 
@@ -29,6 +30,7 @@ export default function PattikondaMandalDetailPage() {
   const otherPop = m.population - m.scPopulation - m.stPopulation;
   const boothCounts = getBoothCountByVillage();
   const mandalBooths = villages.reduce((sum, v) => sum + (boothCounts.get(v.village_name) ?? 0), 0);
+  const map = getMandalMap(m.slug);
 
   return (
     <PattikondaShell>
@@ -150,6 +152,15 @@ export default function PattikondaMandalDetailPage() {
             </p>
           </section>
         )}
+
+        {map ? (
+          <section className="mb-10">
+            <h2 className="mb-5 text-lg font-semibold tracking-tight text-[var(--foreground)]">
+              Location map
+            </h2>
+            <SatelliteMapCard map={map} displayName={m.name} />
+          </section>
+        ) : null}
 
         {gps.length > 0 && (
           <section>

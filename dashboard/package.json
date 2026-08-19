@@ -4,9 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/copy-db.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
     "@tanstack/react-table": "^8.21.3",

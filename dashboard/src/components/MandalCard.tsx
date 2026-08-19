@@ -2,41 +2,54 @@
 
 import Link from "next/link";
 import { mandalColor, mandalLabelColor } from "@/lib/colors";
+import type { LandingMandal } from "@/lib/landing";
 import { formatNumber } from "@/lib/mandals";
-import type { MandalExplore } from "@/lib/explore";
 
 export function MandalCard({
   mandal,
   index,
+  basePath = "",
 }: {
-  mandal: MandalExplore;
+  mandal: LandingMandal;
   index: number;
+  basePath?: string;
 }) {
   const color = mandalColor(index);
   const onColor = mandalLabelColor(color);
+  const href = `${basePath}/mandals/${mandal.slug}`;
 
   return (
-    <Link
-      href={`/mandals/${mandal.slug}`}
-      className="group block overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
-    >
+    <article className="overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--card)] shadow-[var(--shadow-sm)] transition duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]">
       <div className="h-1 w-full" style={{ background: color }} />
-      {mandal.mapImageUrl ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={mandal.mapImageUrl}
-          alt={`${mandal.displayName} map`}
-          className="h-36 w-full border-b border-[var(--border)] bg-[var(--surface-muted)] object-cover transition duration-300 group-hover:scale-[1.02]"
-        />
+      {mandal.mapEmbedUrl ? (
+        <div className="h-44 w-full overflow-hidden border-b border-[var(--border)] bg-[var(--surface-muted)]">
+          <iframe
+            title={`${mandal.displayName} satellite map`}
+            src={mandal.mapEmbedUrl}
+            className="h-full w-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+      ) : mandal.mapImageUrl ? (
+        <Link href={href} className="block overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={mandal.mapImageUrl}
+            alt={`${mandal.displayName} map`}
+            className="h-36 w-full border-b border-[var(--border)] bg-[var(--surface-muted)] object-cover transition duration-300 hover:scale-[1.02]"
+          />
+        </Link>
       ) : (
-        <div
+        <Link
+          href={href}
           className="flex h-36 items-center justify-center border-b border-[var(--border)] text-4xl font-bold"
           style={{ background: color, color: onColor }}
         >
           {mandal.displayName.slice(0, 1)}
-        </div>
+        </Link>
       )}
-      <div className="p-5">
+      <Link href={href} className="block p-5">
         <h3 className="text-lg font-semibold text-[var(--foreground)]">{mandal.displayName}</h3>
         <dl className="mt-4 grid grid-cols-2 gap-3">
           {[
@@ -54,8 +67,8 @@ export function MandalCard({
             </div>
           ))}
         </dl>
-      </div>
-    </Link>
+      </Link>
+    </article>
   );
 }
 

@@ -1,5 +1,9 @@
 /* ── Assembly & Profile ───────────────────────────────────── */
 
+import type { MandalMapRef } from "@/lib/maps";
+
+export type { MandalMapRef };
+
 export const ASSEMBLY_DETAILS = {
   assemblyNo: 141,
   assemblyName: "Dhone",
@@ -112,6 +116,40 @@ export const MANDALS: MandalData[] = [
     density: 134,
   },
 ];
+
+export const MANDAL_MAPS: MandalMapRef[] = [
+  {
+    slug: "dhone",
+    listedName: "Dhone",
+    villagemapUrl: "https://villagemap.in/andhra-pradesh/kurnool/dhone.html",
+    embedUrl:
+      "https://maps.google.co.in/maps?f=q&source=s_q&hl=en&geocode=&q=Dhone+Kurnool+Andhra+Pradesh&t=h&ie=UTF8&hq=Dhone&hnear=Kurnool+Andhra+Pradesh&output=embed&iwloc=near",
+    largerUrl:
+      "https://maps.google.co.in/maps?f=q&source=embed&hl=en&geocode=&q=Dhone+Kurnool+Andhra+Pradesh&t=h&ie=UTF8&hq=Dhone&hnear=Kurnool+Andhra+Pradesh",
+  },
+  {
+    slug: "bethamcherla",
+    listedName: "Bethamcherla",
+    villagemapUrl: "https://villagemap.in/andhra-pradesh/kurnool/bethamcherla.html",
+    embedUrl:
+      "https://maps.google.co.in/maps?f=q&source=s_q&hl=en&geocode=&q=Bethamcherla+Kurnool+Andhra+Pradesh&t=h&ie=UTF8&hq=Bethamcherla&hnear=Kurnool+Andhra+Pradesh&output=embed&iwloc=near",
+    largerUrl:
+      "https://maps.google.co.in/maps?f=q&source=embed&hl=en&geocode=&q=Bethamcherla+Kurnool+Andhra+Pradesh&t=h&ie=UTF8&hq=Bethamcherla&hnear=Kurnool+Andhra+Pradesh",
+  },
+  {
+    slug: "peapully",
+    listedName: "Peapally",
+    villagemapUrl: "https://villagemap.in/andhra-pradesh/kurnool/peapally.html",
+    embedUrl:
+      "https://maps.google.co.in/maps?f=q&source=s_q&hl=en&geocode=&q=Peapally+Kurnool+Andhra+Pradesh&t=h&ie=UTF8&hq=Peapally&hnear=Kurnool+Andhra+Pradesh&output=embed&iwloc=near",
+    largerUrl:
+      "https://maps.google.co.in/maps?f=q&source=embed&hl=en&geocode=&q=Peapally+Kurnool+Andhra+Pradesh&t=h&ie=UTF8&hq=Peapally&hnear=Kurnool+Andhra+Pradesh",
+  },
+];
+
+export function getMandalMap(slug: string): MandalMapRef | undefined {
+  return MANDAL_MAPS.find((m) => m.slug === slug);
+}
 
 export const CONSTITUENCY_TOTALS = {
   mandals: 3,

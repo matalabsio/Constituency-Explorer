@@ -1,4 +1,4 @@
-import { getDb } from "@/lib/db";
+import { getDb, isSqliteReadonly } from "@/lib/db";
 import {
   TARGET_MANDAL_LABELS,
   TARGET_MANDAL_SLUGS,
@@ -739,6 +739,9 @@ export function updateReviewStatus(
 ) {
   const db = getDb();
   if (!db) throw new Error("database not initialized");
+  if (isSqliteReadonly()) {
+    throw new Error("Review writes are disabled on this deployment (read-only database).");
+  }
   const allowed = new Set(["pending", "approved", "rejected", "outdated"]);
   if (!allowed.has(status)) throw new Error("invalid status");
   const current = db

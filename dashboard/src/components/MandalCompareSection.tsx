@@ -1,9 +1,9 @@
 "use client";
 
 import { MandalCompareChart } from "@/components/charts";
-import type { MandalExplore } from "@/lib/explore";
+import type { LandingMandal } from "@/lib/landing";
 
-export function MandalCompareSection({ mandals }: { mandals: MandalExplore[] }) {
+export function MandalCompareSection({ mandals }: { mandals: LandingMandal[] }) {
   return (
     <div className="grid gap-8 lg:grid-cols-2">
       <div>
