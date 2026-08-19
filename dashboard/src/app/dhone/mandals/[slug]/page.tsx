@@ -1,28 +1,28 @@
-"use client";
-
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { notFound } from "next/navigation";
 import { DhoneShell } from "@/components/DhoneShell";
 import { SatelliteMapCard } from "@/components/SatelliteMapCard";
 import { MANDALS, GRAM_PANCHAYATS, getBoothCountByVillage, getMandalMap } from "../../data";
 import { getDhoneVillagesByMandal, getTopDhoneVillages } from "../../villages";
-import { BAR, ChartCard, ColumnChart, PieChart, fmt, focusRing } from "../../ui";
+import { BAR, ChartCard, ColumnChart, PieChart, focusRing } from "../../ui";
 
-export default function MandalDetailPage() {
-  const params = useParams();
-  const slug = params.slug as string;
+function fmt(n: number): string {
+  return n.toLocaleString("en-IN");
+}
+
+export function generateStaticParams() {
+  return MANDALS.map((m) => ({ slug: m.slug }));
+}
+
+export default async function MandalDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const mandal = MANDALS.find((m) => m.slug === slug);
 
-  if (!mandal) {
-    return (
-      <DhoneShell>
-        <div className="py-20 text-center">
-          <p className="text-lg font-semibold text-[var(--foreground)]">Mandal not found</p>
-          <Link href="/dhone/mandals" className="mt-2 text-sm text-[var(--brand-green)] hover:underline">Back to mandals</Link>
-        </div>
-      </DhoneShell>
-    );
-  }
+  if (!mandal) notFound();
 
   const m = mandal;
   const villages = getDhoneVillagesByMandal(slug);

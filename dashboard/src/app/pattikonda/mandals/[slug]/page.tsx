@@ -1,28 +1,28 @@
-"use client";
-
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { notFound } from "next/navigation";
 import { PattikondaShell } from "@/components/PattikondaShell";
 import { SatelliteMapCard } from "@/components/SatelliteMapCard";
 import { MANDALS, GRAM_PANCHAYATS, getBoothCountByVillage, getMandalMap } from "../../data";
 import { getVillagesByMandal } from "../../villages";
-import { BAR, ChartCard, PieChart, fmt, focusRing } from "@/app/dhone/ui";
+import { BAR, ChartCard, PieChart, focusRing } from "@/app/dhone/ui";
 
-export default function PattikondaMandalDetailPage() {
-  const params = useParams();
-  const slug = params.slug as string;
+function fmt(n: number): string {
+  return n.toLocaleString("en-IN");
+}
+
+export function generateStaticParams() {
+  return MANDALS.map((m) => ({ slug: m.slug }));
+}
+
+export default async function PattikondaMandalDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const mandal = MANDALS.find((m) => m.slug === slug);
 
-  if (!mandal) {
-    return (
-      <PattikondaShell>
-        <div className="py-20 text-center">
-          <p className="text-lg font-semibold text-[var(--foreground)]">Mandal not found</p>
-          <Link href="/pattikonda/mandals" className="mt-2 text-sm text-[var(--brand-green)] hover:underline">Back to mandals</Link>
-        </div>
-      </PattikondaShell>
-    );
-  }
+  if (!mandal) notFound();
 
   const m = mandal;
   const villages = getVillagesByMandal(slug);

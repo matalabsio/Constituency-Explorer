@@ -2,6 +2,18 @@
 
 This guide deploys the **Next.js dashboard only**. The Python collector stays on your machine.
 
+## Fastest way to keep all 3 constituencies in the UI
+
+Do **not** query a live database on every page view. Bake data into the site at **build** time.
+
+| Constituency | Store data as | Why it is fast |
+|---|---|---|
+| Dhone | TypeScript (`data.ts`, `villages.ts`) | Already inside the app. HTML is generated at build. |
+| Pattikonda | TypeScript (`data.ts`, `villages.ts`) | Same as Dhone. |
+| Kurupam | `dashboard/data/kurupam.db` | Read once during `npm run build`, then the landing page is static HTML. |
+
+Workflow: collect locally → copy `kurupam.db` → commit → deploy. Visitors get prebuilt pages, not a scrape and not a SQLite round-trip.
+
 ## What Vercel will host
 
 - Kurupam, Dhone, and Pattikonda explorer pages

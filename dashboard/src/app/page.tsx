@@ -3,6 +3,8 @@ import { ConstituencyLanding } from "@/components/ConstituencyLanding";
 import { EmptyState } from "@/components/ui";
 import { getLandingData } from "@/lib/landing";
 
+export const dynamic = "force-static";
+
 export default function HomePage() {
   const data = getLandingData("kurupam");
 
