@@ -56,7 +56,7 @@ function MapLightbox({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg px-3 py-1.5 text-sm text-[var(--muted)] hover:bg-[var(--surface-muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-yellow)]"
+            className="rounded-lg px-3 py-1.5 text-sm text-[var(--muted)] hover:bg-[var(--surface-muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-green)]"
             aria-label="Close map viewer"
           >
             ✕
@@ -75,7 +75,7 @@ function MapLightbox({
           <div className="flex flex-wrap gap-2">
             <Link
               href={`/mandals/${mandal.slug}`}
-              className="inline-flex items-center rounded-[var(--radius-md)] bg-[var(--accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--accent-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-yellow)]"
+              className="inline-flex items-center rounded-[var(--radius-md)] bg-[var(--accent)] px-4 py-2 text-sm font-medium text-white hover:bg-[var(--accent-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-green)]"
             >
               Mandal details
             </Link>
@@ -84,7 +84,7 @@ function MapLightbox({
                 href={mandal.mapPageUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center rounded-[var(--radius-md)] border border-[var(--border)] bg-white px-4 py-2 text-sm font-medium text-[var(--foreground)] hover:bg-[var(--surface-muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-yellow)]"
+                className="inline-flex items-center rounded-[var(--radius-md)] border border-[var(--border)] bg-white px-4 py-2 text-sm font-medium text-[var(--foreground)] hover:bg-[var(--surface-muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-green)]"
               >
                 District source ↗
               </a>
@@ -115,7 +115,7 @@ function MandalMapCard({
           type="button"
           onClick={hasMap ? onExpand : undefined}
           disabled={!hasMap}
-          className={`relative block w-full text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-yellow)] ${
+          className={`relative block w-full text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-green)] ${
             hasMap ? "cursor-zoom-in" : "cursor-default"
           }`}
           aria-label={hasMap ? `Expand ${mandal.displayName} map` : `${mandal.displayName} map not available`}
@@ -136,7 +136,7 @@ function MandalMapCard({
             <div className="flex h-52 flex-col items-center justify-center gap-2 bg-[var(--surface-muted)] sm:h-60">
               <span
                 className="flex h-14 w-14 items-center justify-center rounded-full text-xl font-bold"
-                style={{ background: accent, color: accent === BRAND.yellow ? BRAND.black : BRAND.white }}
+                style={{ background: accent, color: BRAND.white }}
               >
                 {mandal.displayName.slice(0, 1)}
               </span>
@@ -163,7 +163,7 @@ function MandalMapCard({
               style={{
                 background: hasMap ? "var(--highlight-soft)" : "var(--surface-muted)",
                 color: hasMap ? "var(--foreground)" : "var(--muted)",
-                boxShadow: hasMap ? "inset 0 0 0 1px var(--brand-yellow)" : undefined,
+                boxShadow: hasMap ? "inset 0 0 0 1px var(--border)" : undefined,
               }}
             >
               {hasMap ? "Available" : "Missing"}
@@ -210,7 +210,7 @@ export function MandalMapsGallery({ mandals }: { mandals: MandalExplore[] }) {
           <p className="text-[11px] font-semibold uppercase tracking-wider text-[var(--muted)]">Mandals</p>
           <p className="mt-1 text-2xl font-semibold tabular-nums text-[var(--foreground)]">{mandals.length}</p>
         </div>
-        <div className="rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--highlight-soft)] px-5 py-4 ring-1 ring-[var(--brand-yellow)]/30">
+        <div className="rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--surface-muted)] px-5 py-4">
           <p className="text-[11px] font-semibold uppercase tracking-wider text-[var(--muted)]">Maps available</p>
           <p className="mt-1 text-2xl font-semibold tabular-nums text-[var(--foreground)]">
             {withMaps} <span className="text-base font-normal text-[var(--muted)]">/ {mandals.length}</span>

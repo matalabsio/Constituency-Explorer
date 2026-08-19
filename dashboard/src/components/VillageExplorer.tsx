@@ -55,7 +55,7 @@ export function VillageDetailPanel({
               <p className="mt-1 text-sm text-[var(--muted)]">GP: {village.gram_panchayat}</p>
             ) : null}
             {!village.has_detail ? (
-              <p className="mt-2 inline-block rounded-full bg-[var(--highlight-soft)] px-2.5 py-0.5 text-xs font-medium text-[var(--foreground)] ring-1 ring-[var(--brand-yellow)]/50">
+              <p className="mt-2 inline-block rounded-full bg-[var(--surface-muted)] px-2.5 py-0.5 text-xs font-medium text-[var(--foreground)] ring-1 ring-[var(--border)]">
                 Directory only — full census page not collected
               </p>
             ) : null}
@@ -233,7 +233,7 @@ export function VillageExplorer({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search village, GP, census code, PIN…"
-          className="w-full max-w-md rounded-[var(--radius-md)] border border-[var(--border)] bg-white px-4 py-2.5 text-sm shadow-[var(--shadow-sm)] outline-none focus:ring-2 focus:ring-[var(--brand-yellow)]/60 lg:flex-1"
+          className="w-full max-w-md rounded-[var(--radius-md)] border border-[var(--border)] bg-white px-4 py-2.5 text-sm shadow-[var(--shadow-sm)] outline-none focus:ring-2 focus:ring-[var(--brand-green)]/40 lg:flex-1"
         />
         <div className="flex flex-wrap gap-2">
           <div className="inline-flex rounded-[var(--radius-md)] border border-[var(--border)] bg-white p-1">
@@ -322,7 +322,7 @@ export function VillageExplorer({
                       <button
                         type="button"
                         onClick={() => setSelected(v)}
-                        className="flex w-full items-center px-4 py-3.5 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--brand-yellow)] group-hover:bg-[var(--highlight-soft)]"
+                        className="flex w-full items-center px-4 py-3.5 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--brand-green)] group-hover:bg-[var(--highlight-soft)]"
                       >
                         {v.village_name}
                         {!v.has_detail ? (

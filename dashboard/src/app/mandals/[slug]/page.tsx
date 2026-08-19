@@ -61,14 +61,14 @@ export default async function MandalDetailPage({
 
       <PageSection id="overview">
         <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <Metric label="Villages" value={mandal.villageCount} accent={BRAND.yellow} />
+          <Metric label="Villages" value={mandal.villageCount} accent={BRAND.green} />
           <Metric label="Gram Panchayats" value={mandal.gramPanchayats ?? 0} accent={BRAND.red} />
           <Metric label="Population" value={mandal.totalPopulation} sub="Census 2011" accent={BRAND.green} />
           <Metric
             label="Sex ratio"
             value={demo.sexRatio ?? "—"}
             sub="Females per 1,000 males"
-            accent={BRAND.yellow}
+            accent={BRAND.green}
           />
         </section>
       </PageSection>

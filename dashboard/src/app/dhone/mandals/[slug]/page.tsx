@@ -69,7 +69,7 @@ export default async function MandalDetailPage({
       <div className="mb-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
         {[
           { label: "Population", value: fmt(m.population), accent: "var(--brand-green)" },
-          { label: "Households", value: fmt(m.households), accent: "var(--brand-yellow)" },
+          { label: "Households", value: fmt(m.households), accent: "var(--brand-green)" },
           { label: "Sex Ratio", value: String(m.sexRatio), accent: "var(--brand-red)" },
           { label: "Literacy", value: `${m.literacy}%`, accent: "var(--accent)" },
           { label: "Polling Booths", value: String(mandalBooths), accent: "var(--brand-green)" },

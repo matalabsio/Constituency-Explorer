@@ -13,7 +13,6 @@ export function LandingHero({ data }: { data: ConstituencyLandingModel }) {
           {
             label: "Registered electors",
             value: electorate.totalRegisteredVoters,
-            accent: BRAND.yellow,
             sub: `${electorate.dataYear} rolls`,
           },
           ...(electorate.turnoutPct != null
@@ -21,7 +20,6 @@ export function LandingHero({ data }: { data: ConstituencyLandingModel }) {
                 {
                   label: "2024 turnout",
                   value: `${electorate.turnoutPct}%`,
-                  accent: BRAND.red,
                   sub: electorate.votesPolled
                     ? `${formatNumber(electorate.votesPolled)} votes polled`
                     : undefined,
@@ -30,128 +28,86 @@ export function LandingHero({ data }: { data: ConstituencyLandingModel }) {
             : []),
         ]
       : []),
-    { label: "Mandals", value: stats.mandals, accent: BRAND.green },
-    { label: "Revenue villages", value: stats.officialVillages, accent: BRAND.red },
-    {
-      label: "Population",
-      value: stats.totalPopulation,
-      accent: BRAND.yellow,
-      sub: `Census ${stats.censusYear}`,
-    },
-  ].slice(0, 4);
+    { label: "Mandals", value: stats.mandals, sub: "Revenue subdivisions" },
+    { label: "Revenue villages", value: stats.officialVillages, sub: `${stats.collectedVillages} in directory` },
+  ];
 
   return (
-    <section className="landing-hero relative -mx-4 -mt-8 mb-12 overflow-hidden sm:-mx-6 lg:-mx-8 lg:-mt-10 lg:mb-14">
-      <div className="flex h-1.5 w-full">
-        <div className="h-full flex-[2] bg-[var(--brand-yellow)]" />
-        <div className="h-full flex-1 bg-[var(--brand-red)]" />
-        <div className="h-full flex-[2] bg-[var(--brand-green)]" />
-      </div>
-
-      <div className="relative bg-[var(--brand-black)] px-4 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14">
+    <section className="landing-hero relative mb-10 sm:mb-12 lg:mb-14">
+      <div className="relative overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border)] bg-[var(--card)] px-4 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.07]"
-          style={{
-            backgroundImage:
-              "linear-gradient(var(--brand-yellow) 1px, transparent 1px), linear-gradient(90deg, var(--brand-yellow) 1px, transparent 1px)",
-            backgroundSize: "48px 48px",
-          }}
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[var(--brand-red)] opacity-20 blur-3xl"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute -bottom-16 left-1/3 h-48 w-48 rounded-full bg-[var(--brand-green)] opacity-15 blur-3xl"
+          className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-[var(--accent-soft)] opacity-80 blur-3xl"
           aria-hidden
         />
 
-        <div className="relative grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-12">
-          <div>
+        <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-start lg:gap-12">
+          <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center bg-[var(--brand-yellow)] px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[var(--brand-black)]">
+              <span className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--surface-muted)] px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[var(--foreground)]">
                 {hero.reservationLabel}
               </span>
               {hero.electorBadge ? (
-                <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-medium text-white/70">
+                <span className="inline-flex max-w-full items-center rounded-full border border-[var(--border)] px-3 py-1 text-[11px] font-medium text-[var(--muted)]">
                   {hero.electorBadge}
                 </span>
               ) : null}
             </div>
 
-            <p className="mark-yellow mt-5 text-xs font-semibold uppercase tracking-[0.22em]">
+            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
               {hero.districtLine}
             </p>
-            <h1 className="mt-3 max-w-xl text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+            <h1 className="mt-3 max-w-xl text-3xl font-semibold leading-[1.12] tracking-tight text-[var(--foreground)] sm:text-4xl lg:text-5xl">
               {hero.title}
-              <span className="mt-2 block">
-                <span className="mark-yellow">{hero.mark}</span>
+              <span className="mt-2 block text-lg font-medium tracking-normal text-[var(--muted)] sm:text-xl">
+                {hero.mark}
               </span>
             </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/65 sm:text-lg">
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-[var(--muted)] sm:text-base">
               {hero.description}
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
                 href={villagesHref}
-                className="inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--brand-red)] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[var(--brand-red)]/25 transition hover:bg-[var(--accent-hover)] active:scale-[0.98]"
+                className="inline-flex items-center justify-center rounded-[var(--radius-md)] bg-[var(--brand-black)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#2e2c29] active:scale-[0.98]"
               >
                 Browse {formatNumber(stats.collectedVillages)} villages
               </Link>
               <Link
                 href={mandalsHref}
-                className="inline-flex items-center justify-center rounded-[var(--radius-md)] border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/10 active:scale-[0.98]"
+                className="inline-flex items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--card)] px-5 py-3 text-sm font-semibold text-[var(--foreground)] transition hover:bg-[var(--surface-muted)] active:scale-[0.98]"
               >
                 Explore mandals
               </Link>
               <Link
                 href={mapsHref}
-                className="inline-flex items-center justify-center rounded-[var(--radius-md)] px-4 py-3 text-sm font-medium text-white/60 transition hover:bg-[var(--brand-yellow)] hover:text-[var(--brand-black)]"
+                className="inline-flex items-center justify-center rounded-[var(--radius-md)] px-5 py-3 text-sm font-medium text-[var(--muted)] transition hover:bg-[var(--surface-muted)] hover:text-[var(--foreground)]"
               >
                 View maps
               </Link>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 gap-3">
             {heroStats.map((item) => (
               <div
                 key={item.label}
-                className="relative overflow-hidden rounded-[var(--radius-lg)] border border-white/10 bg-white/[0.04] p-4 sm:p-5"
+                className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--surface-muted)] p-4 sm:p-5"
               >
-                <div
-                  className="absolute inset-x-0 top-0 h-0.5"
-                  style={{ background: item.accent }}
-                  aria-hidden
-                />
-                <p className="text-[10px] font-semibold uppercase tracking-wider text-white/45">
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-[var(--muted)]">
                   {item.label}
                 </p>
-                <p className="mt-2 text-2xl font-semibold tabular-nums tracking-tight text-white sm:text-3xl">
+                <p className="mt-2 text-xl font-semibold tabular-nums tracking-tight text-[var(--foreground)] sm:text-2xl">
                   {typeof item.value === "number" ? formatNumber(item.value) : item.value}
                 </p>
                 {"sub" in item && item.sub ? (
-                  <p className="mt-1 text-xs text-white/40">{item.sub}</p>
-                ) : (
-                  <p className="mt-1 text-xs text-white/40">
-                    {item.label === "Revenue villages"
-                      ? `${stats.collectedVillages} collected`
-                      : item.label === "Mandals"
-                        ? "Revenue subdivisions"
-                        : item.label === "Registered electors"
-                          ? electorate?.reservation ?? "Reserved"
-                          : "District records"}
-                  </p>
-                )}
+                  <p className="mt-1 text-xs leading-relaxed text-[var(--muted)]">{item.sub}</p>
+                ) : null}
               </div>
             ))}
           </div>
         </div>
       </div>
-
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-[var(--brand-yellow)]/40 to-transparent" />
     </section>
   );
 }
@@ -174,8 +130,8 @@ export function LandingSection({
       <div className="mb-5 flex items-start gap-3">
         {accent ? (
           <span
-            className="mt-1.5 h-8 w-1 shrink-0 rounded-full"
-            style={{ background: accent }}
+            className="mt-1.5 h-8 w-px shrink-0 bg-[var(--border)]"
+            style={{ background: accent === BRAND.black ? undefined : accent }}
             aria-hidden
           />
         ) : null}

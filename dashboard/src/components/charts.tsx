@@ -472,8 +472,8 @@ export function GpPopulationChart({
               <button
                 type="button"
                 onClick={() => onSelectGp(isSelected ? null : gp.key)}
-                className={`w-full rounded-[var(--radius-md)] px-2 py-1.5 text-left transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-yellow)] ${
-                  isSelected ? "bg-[var(--highlight-soft)] ring-1 ring-[var(--brand-yellow)]/50" : "hover:bg-[var(--surface-muted)]"
+                className={`w-full rounded-[var(--radius-md)] px-2 py-1.5 text-left transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-green)] ${
+                  isSelected ? "bg-[var(--surface-muted)] ring-1 ring-[var(--border)]" : "hover:bg-[var(--surface-muted)]"
                 }`}
                 aria-pressed={isSelected}
               >

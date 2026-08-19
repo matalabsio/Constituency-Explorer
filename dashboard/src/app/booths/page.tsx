@@ -9,7 +9,7 @@ import {
   PageHeader,
 } from "@/components/ui";
 import { assignBoothMandals, boothCountsByMandal } from "@/lib/booths";
-import { BRAND } from "@/lib/colors";
+import { BRAND, CHART } from "@/lib/colors";
 import { getExploreData } from "@/lib/explore";
 import { formatNumber } from "@/lib/mandals";
 
@@ -45,7 +45,7 @@ export default function BoothsPage() {
             label={item.name}
             value={item.count}
             sub="polling stations"
-            accent={[BRAND.yellow, BRAND.red, BRAND.green, BRAND.black, BRAND.yellow][index]}
+            accent={[BRAND.green, BRAND.red, BRAND.black, CHART.st, "#6B6762"][index]}
           />
         ))}
       </section>

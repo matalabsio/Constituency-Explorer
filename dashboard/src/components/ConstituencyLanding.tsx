@@ -208,7 +208,7 @@ export function ConstituencyLanding({ data }: { data: ConstituencyLandingModel }
           id="demographics"
           title="Constituency demographics"
           description={`Census ${stats.censusYear}: aggregated from mandal records`}
-          accent={BRAND.yellow}
+          accent={BRAND.green}
         >
           <div className="grid gap-6 lg:grid-cols-2">
             <Card accent={BRAND.black}>

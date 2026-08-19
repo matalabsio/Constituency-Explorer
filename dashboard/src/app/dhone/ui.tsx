@@ -180,7 +180,6 @@ export function BarChart({
                   style={{
                     width: `${Math.max(pct, s.value > 0 ? 2 : 0)}%`,
                     background: s.color,
-                    boxShadow: s.color.toLowerCase() === "#ffff00" ? "inset 0 0 0 1px #2b2626" : undefined,
                   }}
                   onMouseEnter={(e) => showTip(e, label)}
                   onMouseMove={move}
@@ -216,7 +215,6 @@ export function ColumnChart({ slices, caption }: { slices: ChartSlice[]; caption
                 style={{
                   height: `${Math.max(pct, s.value > 0 ? 4 : 0)}%`,
                   background: s.color,
-                  boxShadow: s.color.toLowerCase() === "#ffff00" ? "inset 0 0 0 1px #2b2626" : undefined,
                 }}
                 onMouseEnter={(e) => show(e, `${s.label}: ${fmt(s.value)}`)}
                 onMouseMove={move}

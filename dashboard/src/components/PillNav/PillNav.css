@@ -99,7 +99,7 @@
   left: 50%;
   bottom: 0;
   border-radius: 50%;
-  background: var(--brand-yellow, #ffff00);
+  background: var(--surface-muted, #f1efea);
   z-index: 1;
   display: block;
   pointer-events: none;

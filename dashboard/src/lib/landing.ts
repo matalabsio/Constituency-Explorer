@@ -17,7 +17,7 @@ import {
 } from "@/app/pattikonda/data";
 import type { MandalDemographics } from "@/lib/demographics";
 import { getConstituencyDemographics, getExploreData } from "@/lib/explore";
-import type { ConstituencyElectorate, ConstituencyProfile } from "@/lib/queries";
+import type { ConstituencyElectorate, ConstituencyProfile, ElectionResult } from "@/lib/queries";
 import {
   getConstituencyMeta,
   sectionHref,
@@ -172,10 +172,53 @@ function aggregateDemo(mandals: LandingMandal[]): MandalDemographics {
   };
 }
 
+/** ECI 2024 AC-wise voters (Kurupam ST, AC 11): 1,94,616 electors, 1,55,595 votes, 79.95% turnout. */
+const KURUPAM_2024_ROLLS = {
+  totalRegisteredVoters: 194616,
+  maleVoters: 94805,
+  femaleVoters: 99769,
+  thirdGenderVoters: 42,
+  turnoutPct: 79.95,
+  votesPolled: 155595,
+} as const;
+
+function withKurupamTurnout(
+  collected: ConstituencyElectorate | null,
+  election2024: ElectionResult | undefined,
+  meta: ConstituencyMeta
+): ConstituencyElectorate {
+  const turnoutPct = collected?.turnoutPct ?? election2024?.turnoutPct ?? KURUPAM_2024_ROLLS.turnoutPct;
+  const votesPolled = collected?.votesPolled ?? election2024?.votesPolled ?? KURUPAM_2024_ROLLS.votesPolled;
+  if (collected) {
+    return { ...collected, turnoutPct, votesPolled };
+  }
+  const male = KURUPAM_2024_ROLLS.maleVoters;
+  const female = KURUPAM_2024_ROLLS.femaleVoters;
+  const sexRatio = Math.round((1000 * female) / male);
+  return {
+    constituencyName: meta.name,
+    reservation: meta.reservation,
+    lokSabhaSegment: meta.lokSabha,
+    district: meta.district,
+    totalRegisteredVoters: KURUPAM_2024_ROLLS.totalRegisteredVoters,
+    maleVoters: male,
+    femaleVoters: female,
+    thirdGenderVoters: KURUPAM_2024_ROLLS.thirdGenderVoters,
+    sexRatio,
+    sexRatioLabel: `${sexRatio} female electors per 1,000 male electors`,
+    turnoutPct,
+    votesPolled,
+    dataYear: "2024",
+    sourceUrl: "https://www.eci.gov.in/",
+    reviewStatus: "approved",
+  };
+}
+
 function kurupamLanding(): ConstituencyLandingModel {
   const meta = getConstituencyMeta("kurupam");
   const data = getExploreData();
-  const electorate = data.electorate;
+  const election2024 = data.elections?.elections.find((e) => e.year === 2024);
+  const electorate = withKurupamTurnout(data.electorate, election2024, meta);
   const mandals: LandingMandal[] = data.mandals.map((m) => {
     const collected = data.villages.filter((v) => v.entity_slug === m.slug);
     return {
