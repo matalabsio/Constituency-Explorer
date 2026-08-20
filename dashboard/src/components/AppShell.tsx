@@ -95,13 +95,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             aria-expanded={open}
             aria-controls={panelId}
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[var(--brand-black)] py-1 pl-1 pr-3 text-left text-white transition hover:bg-[#2e2c29] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-green)] active:scale-[0.98]"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--card)] py-1 pl-1 pr-3 text-left text-[var(--foreground)] shadow-[var(--shadow-sm)] transition hover:bg-[var(--surface-muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand-green)] active:scale-[0.98]"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/kurupam-logo.svg"
               alt=""
-              className="h-8 w-8 rounded-full bg-white object-cover"
+              className="h-8 w-8 rounded-full bg-[var(--surface-muted)] object-cover"
             />
             <span className="hidden text-[13px] font-semibold leading-tight sm:block">
               Constituency Explorer
